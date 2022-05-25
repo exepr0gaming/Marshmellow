@@ -11,7 +11,15 @@ import SwiftUI
 struct MarshmellowApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//					SplashScreenView()
+//						.preferredColorScheme(.dark)
+//					ContentPresentationView(image: "man2", title: "qweqwe", subTitle: "qweqweqwe", presentationVM: PresentationVM())
+//						.preferredColorScheme(.dark)
+					PresentationView()
+						.preferredColorScheme(.dark)
+					//MainView()
+					//SecondScreenView()
         }
+				
     }
 }
