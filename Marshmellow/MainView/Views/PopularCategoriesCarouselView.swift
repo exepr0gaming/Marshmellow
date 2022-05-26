@@ -23,8 +23,7 @@ struct PopularCategoriesCarouselView: View {
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack(alignment: .top, spacing: 8) {
 							ForEach(self.wallpapers.wallpapers.popCats, id: \.self) { wallpaper in
-								NewCategoriesCard(title: wallpaper.nameCategory, imageStr: wallpaper.urlPhoto)
-									.frame(width: 352, height: 176)
+								PopularAndLiveCardV(imageStr: wallpaper.urlPhoto)
 								
 							} // ForEach
 						}

@@ -29,7 +29,7 @@ struct MainView: View {
 					// MARK: - Header
 					VStack(spacing: 12) {
 						HStack(spacing: 16) {
-							Text("Marshmello")
+							Text("Marshmello".uppercased())
 								.nunitoFont(name: FontsE.balooBhaijaan.rawValue.uppercased(), size: 18)
 								.shadow(color: .cGreen, radius: 5, x: 0, y: 0)
 							
@@ -37,7 +37,7 @@ struct MainView: View {
 								.resizable()
 								.frame(width: 34, height: 37)
 							
-							Text("Wallpapers")
+							Text("Wallpapers".uppercased())
 								.nunitoFont(name: FontsE.balooBhaijaan.rawValue.uppercased(), size: 18)
 								.shadow(color: .cGreen, radius: 5, x: 0, y: 0)
 						}
@@ -47,13 +47,15 @@ struct MainView: View {
 					.padding()
 					
 					// MARK: - Triple Carousels
-					VStack(spacing: 18) {
+					VStack {
 						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, wallpapers: wallpapers)
+							.padding(.bottom, 22)
 						
 						PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, wallpapers: wallpapers)
-							.padding(.top, 8) // // 26 - 18 from VStack spacing
+							.padding(.bottom, 17)
 						
-						LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue, liveCat: liveCatData)
+						LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue)
+							.padding(.bottom, 18)
 					}
 					
 					SecondScreenView()
@@ -65,6 +67,7 @@ struct MainView: View {
 				
 			}
 			.background(Color.black)
+			.ignoresSafeArea()
 //			.onAppear {
 //				wallpapers.fetch(fetchUrl: FetchUrlsE.wallpapers.rawValue)
 //				//print(wallpapers.wallpapers)

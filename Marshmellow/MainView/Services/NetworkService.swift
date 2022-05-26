@@ -12,7 +12,7 @@ struct NetworkService {
 	// MARK: - Fetch T
 	func fetch<T: Decodable>(_ type: T.Type, fetchUrl: FetchUrlsE.RawValue, completion: @escaping(Result<T, APIErrorE>) -> Void) {
 		//isLoading = true
-		guard let url = URL(string: fetchUrl) else {
+		guard let url = URL(string: "http://167.99.51.18" + fetchUrl) else {
 			let err = APIErrorE.badURL
 			completion(Result.failure(err))
 			return
@@ -38,7 +38,7 @@ struct NetworkService {
 	// MARK: - Fetch Wallpapers
 	func fetchWallpapers(fetchUrl: FetchUrlsE.RawValue, completion: @escaping(Result<WallpaperApiModel, APIErrorE>) -> Void) {
 		//isLoading = true
-		guard let url = URL(string: fetchUrl) else {
+		guard let url = URL(string: "http://167.99.51.18" + fetchUrl) else {
 			let err = APIErrorE.badURL
 			completion(Result.failure(err))
 			return

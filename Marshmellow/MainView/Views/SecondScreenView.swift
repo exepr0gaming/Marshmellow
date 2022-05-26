@@ -67,6 +67,7 @@ struct SecondScreenView: View {
 //						.font(.system(size: 20))
 //						.foregroundColor(.white)
 					LottieView(name: "progressView", loopMode: .loop)
+						.frame(width: 26, height: 26)
 
 					GridView()
 						.padding(.top, 9)

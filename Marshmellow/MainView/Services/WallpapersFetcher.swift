@@ -9,8 +9,8 @@ import SwiftUI
 
 class WallpapersFetcher: ObservableObject {
 	
-	var mainUrl = "http://167.99.51.18/api/wallpapers/"
-	var mainLive = "http://167.99.51.18/api/wallpapers/live/"
+	var mainUrl = "/api/wallpapers/" // http://167.99.51.18/api/wallpapers/
+	var mainLive = "/api/wallpapers/live/" // http://167.99.51.18/api/wallpapers/live/
 	var urlStatic = "static/1" // /api/wallpapers/static/1
 	//var urlLive = "live/1" // /api/wallpapers/live/1
 	var testUrl = "http://167.99.51.18/media/wallpapers/static/Neon/3396887.jpg"
@@ -39,51 +39,32 @@ class WallpapersFetcher: ObservableObject {
 		let service = NetworkService()
 		
 		service.fetchWallpapers(fetchUrl: FetchUrlsE.wallpapers.rawValue) { [unowned self] result in
-			self.isLoading = false
-			switch result {
-				case .success(let wallpapers):
-					self.wallpapers = wallpapers
-				case .failure(let err):
-					self.errMessage = err.localizedDescription
-					print(err) // err.description
+			DispatchQueue.main.async {
+				self.isLoading = false
+				switch result {
+					case .success(let wallpapers):
+						self.wallpapers = wallpapers
+					case .failure(let err):
+						self.errMessage = err.localizedDescription
+						print(err) // err.description
+				}
 			}
 		}
 	}
 	
+	// MARK: - Preview Helpers
+	static func errorState() -> WallpapersFetcher {
+		let fetcher = WallpapersFetcher()
+		fetcher.errMessage = APIErrorE.url(URLError(.notConnectedToInternet)).localizedDescription
+		return fetcher
+	}
+	
+	static func successState() -> WallpapersFetcher {
+		let fetcher = WallpapersFetcher()
+		fetcher.wallpapers = WallpaperApiModel.wallpaperExample()
+		return fetcher
+	}
 	
 }
 
-enum FetchUrlsE: String {
-	case wallpapers = "http://167.99.51.18/api/wallpapers/"
-	case live = "http://167.99.51.18/api/wallpapers/live/"
-}
-
-enum APIErrorE: Error, CustomStringConvertible {
-	case badURL
-	case badResponse(statusCode: Int)
-	case url(URLError?)
-	case parsing(DecodingError?)
-	case unknown
-	
-	var localizedDescription: String {
-		// feedback for users
-		switch self {
-			case .badURL, .parsing, .unknown: return "Sorry, something went wrong."
-			case .badResponse(_): return "Sorry, the connection to our server failed."
-			case .url(let err): return err?.localizedDescription ?? "Something went wrong"
-		}
-	}
-	
-	var description: String {
-		// info for debugging
-		switch self {
-			
-			case .badURL: return "invalid URL"
-			case .badResponse(statusCode: let statusCode): return "bad response with status code \(statusCode)"
-			case .url(let err): return err?.localizedDescription ?? "url session err"
-			case .parsing(let err): return "parsing error \(err?.localizedDescription ?? "")"
-			case .unknown: return "unknown error"
-		}
-	}
-}
 

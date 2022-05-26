@@ -68,6 +68,7 @@
 		8473D9E6283D3E7F001832F1 /* DetailWallpaperVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473D9E5283D3E7F001832F1 /* DetailWallpaperVM.swift */; };
 		847B328D283FBD73001A2A1F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B328C283FBD73001A2A1F /* ErrorView.swift */; };
 		847B328F283FC74B001A2A1F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B328E283FC74B001A2A1F /* NetworkService.swift */; };
+		847B329128401433001A2A1F /* NetworkEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B329028401433001A2A1F /* NetworkEnums.swift */; };
 		84B32046283ED12B00042076 /* CongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32045283ED12B00042076 /* CongratulationsView.swift */; };
 		84B32049283EDA1200042076 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32048283EDA1200042076 /* View + Extension.swift */; };
 		84E0D0C2283E5D4E0067915D /* UIScreen + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0D0C1283E5D4E0067915D /* UIScreen + Extension.swift */; };
@@ -138,6 +139,7 @@
 		8473D9E5283D3E7F001832F1 /* DetailWallpaperVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWallpaperVM.swift; sourceTree = "<group>"; };
 		847B328C283FBD73001A2A1F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		847B328E283FC74B001A2A1F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		847B329028401433001A2A1F /* NetworkEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkEnums.swift; sourceTree = "<group>"; };
 		84B32045283ED12B00042076 /* CongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsView.swift; sourceTree = "<group>"; };
 		84B32047283ED84500042076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B32048283EDA1200042076 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				84E327E1283EFCB300B27000 /* WallpapersFetcher.swift */,
 				847B328E283FC74B001A2A1F /* NetworkService.swift */,
 				84E327E3283EFEFF00B27000 /* WallpaperApiModel.swift */,
+				847B329028401433001A2A1F /* NetworkEnums.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				8473D9E2283D2A2D001832F1 /* DetailWallpaperView.swift in Sources */,
 				84E0D0C2283E5D4E0067915D /* UIScreen + Extension.swift in Sources */,
 				84E327E6283F9C1900B27000 /* AsyncImageView.swift in Sources */,
+				847B329128401433001A2A1F /* NetworkEnums.swift in Sources */,
 				842AB00D2836D8B500C6CD6E /* PresentationContentE.swift in Sources */,
 				843155DE28354422006A429F /* PresentationVM.swift in Sources */,
 				84E327E4283EFEFF00B27000 /* WallpaperApiModel.swift in Sources */,

@@ -17,6 +17,14 @@ struct WallpaperApiModel: Codable, Hashable {
 		case newCats = "new_categories"
 		case popCats = "popular_categories"
 	}
+	
+	static func wallpaperExample() -> WallpaperApiModel {
+		return WallpaperApiModel(
+			catStatic: [CategoryModel(link: "/api/wallpapers/static/1", nameCategory: "Meal", type: "static", urlPhoto: "/media/meal.jpg"), CategoryModel(link: "/api/wallpapers/static/2", nameCategory: "Various", type: "static", urlPhoto: "/media/various.jpg")],
+			newCats: [CategoryModel(link: "/api/wallpapers/static/1", nameCategory: "Meal", type: "static", urlPhoto: "/media/meal.jpg"), CategoryModel(link: "/api/wallpapers/static/2", nameCategory: "Various", type: "static", urlPhoto: "/media/various.jpg")],
+			popCats: [CategoryModel(link: "/api/wallpapers/static/1", nameCategory: "Meal", type: "static", urlPhoto: "/media/meal.jpg"), CategoryModel(link: "/api/wallpapers/static/2", nameCategory: "Various", type: "static", urlPhoto: "/media/various.jpg")])
+	}
+	
 }
 
 struct CategoryStatic {

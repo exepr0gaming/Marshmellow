@@ -10,7 +10,7 @@ import SwiftUI
 struct LiveCatCarouselView: View {
 	
 	let titleView: String
-	let liveCat: [LiveCategoriesM]
+	//let liveCat: [LiveCategoriesM]
 	
 		var body: some View {
 			
@@ -36,6 +36,6 @@ struct LiveCatCarouselView: View {
 
 struct LiveCatCarouselView_Previews: PreviewProvider {
     static var previews: some View {
-			LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue, liveCat: liveCatData)
+			LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue)
     }
 }
