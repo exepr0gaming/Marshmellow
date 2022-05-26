@@ -21,13 +21,7 @@ struct NewCategoriesCard: View {
 				Rectangle()
 					.fill(Color.cGray29)
 				
-				Image(imageStr)
-					.resizable()
-				
-//				if self.imageLoader.image != nil {
-//					Image(uiImage: self.imageLoader.image!)
-//						.resizable()
-//				}
+				AsyncImageView(imageStr: imageStr)
 			}
 			.frame(width: 100, height: 100)
 			.aspectRatio(1/1, contentMode: .fit)
@@ -35,6 +29,7 @@ struct NewCategoriesCard: View {
 			
 			Text(title)
 				.nunitoFont()
+				.foregroundColor(.black) // ??
 		}
 		.lineLimit(1)
 		.onAppear {

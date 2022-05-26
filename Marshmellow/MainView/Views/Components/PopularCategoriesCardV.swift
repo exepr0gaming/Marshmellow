@@ -12,10 +12,13 @@ struct PopularAndLiveCardV: View {
 	var imageStr: String
 	
     var body: some View {
-       Image(imageStr)
-				.resizable()
-				.frame(width: 352, height: 176)
-				.cornerRadius(8)
+			
+			AsyncImageView(imageStr: imageStr)
+			
+//       Image(imageStr)
+//				.resizable()
+//				.frame(width: 352, height: 176)
+//				.cornerRadius(8)
     }
 }
 

@@ -10,7 +10,8 @@ import SwiftUI
 struct PopularCategoriesCarouselView: View {
 
 		let titleView: String
-		let popularCat: [PopularCategoriesM]
+		@ObservedObject var wallpapers: WallpapersFetcher
+		//let popularCat: [PopularCategoriesM]
 		
 			var body: some View {
 					
@@ -20,12 +21,22 @@ struct PopularCategoriesCarouselView: View {
 						.padding(.horizontal)
 					
 					ScrollView(.horizontal, showsIndicators: false) {
-						HStack(alignment: .top, spacing: 9) {
-							ForEach(self.popularCat, id: \.self) { wallpaper in
-								PopularAndLiveCardV(imageStr: wallpaper.imageStr)
+						HStack(alignment: .top, spacing: 8) {
+							ForEach(self.wallpapers.wallpapers.popCats, id: \.self) { wallpaper in
+								NewCategoriesCard(title: wallpaper.nameCategory, imageStr: wallpaper.urlPhoto)
+									.frame(width: 352, height: 176)
+								
 							} // ForEach
 						}
-					}
+					} // ScrollView
+					
+//					ScrollView(.horizontal, showsIndicators: false) {
+//						HStack(alignment: .top, spacing: 9) {
+//							ForEach(self.popularCat, id: \.self) { wallpaper in
+//								PopularAndLiveCardV(imageStr: wallpaper.imageStr)
+//							} // ForEach
+//						}
+//					}
 					
 				} // VStack
 				
@@ -34,6 +45,6 @@ struct PopularCategoriesCarouselView: View {
 
 	struct PopularCategoriesCarouselView_Previews: PreviewProvider {
 			static var previews: some View {
-				PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, popularCat: popularCatData)
+				PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, wallpapers: WallpapersFetcher())
 			}
 	}

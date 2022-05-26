@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct WallpaperApiModel: Codable, Hashable {
-	var catStatic: [CategoriesStatic]
-	var newCats: [NewCategories]
-	var popCats: [PopularCategories]
+	var catStatic: [CategoryModel]
+	var newCats: [CategoryModel]
+	var popCats: [CategoryModel]
 	
 	private enum CodingKeys: String, CodingKey {
 		case catStatic = "categories_static"
@@ -29,26 +29,35 @@ struct CategoryStatic {
 	}
 }
 
-struct CategoriesStatic: Codable, Hashable {
+struct CategoryModel: Codable, Hashable {
 	var link: String
 	var nameCategory: String
 	var type: String
 	var urlPhoto: String
 }
 
-struct NewCategories: Codable, Hashable {
-	var link: String
-	var nameCategory: String
-	var type: String
-	var urlPhoto: String
-}
+//struct CategoriesStatic: Codable, Hashable {
+//	var link: String
+//	var nameCategory: String
+//	var type: String
+//	var urlPhoto: String
+//}
+//
+//struct NewCategories: Codable, Hashable {
+//	var link: String
+//	var nameCategory: String
+//	var type: String
+//	var urlPhoto: String
+//}
+//
+//struct PopularCategories: Codable, Hashable {
+//	var link: String
+//	var nameCategory: String
+//	var type: String
+//	var urlPhoto: String
+//}
 
-struct PopularCategories: Codable, Hashable {
-	var link: String
-	var nameCategory: String
-	var type: String
-	var urlPhoto: String
-}
+
 //{
 //"categories_static": [
 //{

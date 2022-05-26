@@ -15,9 +15,10 @@ struct MarshmellowApp: App {
 //						.preferredColorScheme(.dark)
 //					ContentPresentationView(image: "man2", title: "qweqwe", subTitle: "qweqweqwe", presentationVM: PresentationVM())
 //						.preferredColorScheme(.dark)
-					PresentationView()
-						.preferredColorScheme(.dark)
-					//MainView()
+//					PresentationView()
+//						.preferredColorScheme(.dark)
+					//NewCategoriesCarouselView(titleView: "New Categories", wallpapers: WallpapersFetcher())
+					MainView()
 					//SecondScreenView()
         }
 				

@@ -9,9 +9,19 @@ import SwiftUI
 
 struct MainView: View {
 	
-	@StateObject var networkService = NetworkService()
+	@StateObject var wallpapers = WallpapersFetcher()
 	
     var body: some View {
+			
+			// MARK: - TO-DO changes
+			if wallpapers.isLoading {
+				//LoadingView()
+			} else if wallpapers.errMessage != nil {
+				ErrorView(wallpapers: wallpapers)
+			} else {
+				// all content from bottom
+			}
+			
 			ScrollView(.vertical, showsIndicators: false) {
 				
 				VStack {
@@ -38,9 +48,9 @@ struct MainView: View {
 					
 					// MARK: - Triple Carousels
 					VStack(spacing: 18) {
-						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, newCategories: newCatData, networkService: networkService)
+						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, wallpapers: wallpapers)
 						
-						PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, popularCat: popularCatData)
+						PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, wallpapers: wallpapers)
 							.padding(.top, 8) // // 26 - 18 from VStack spacing
 						
 						LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue, liveCat: liveCatData)
@@ -53,9 +63,12 @@ struct MainView: View {
 				} // main VStack
 				.mainFrameInfinity()
 				
-				
 			}
 			.background(Color.black)
+//			.onAppear {
+//				wallpapers.fetch(fetchUrl: FetchUrlsE.wallpapers.rawValue)
+//				//print(wallpapers.wallpapers)
+//			}
 			
 			
     }
