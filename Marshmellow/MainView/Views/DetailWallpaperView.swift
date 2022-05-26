@@ -17,10 +17,43 @@ struct DetailWallpaperView: View {
 	var body: some View {
 		
 		ZStack {
-			Image("bigR2")
-				.resizable()
-				.scaledToFill()
-				.ignoresSafeArea()
+			
+			AsyncImage(url: URL(string: "http://167.99.51.18/media/wallpapers/static/Meal/3171134.jpg")) { phase in
+				switch phase {
+					case .empty:
+						VStack {
+							Text("No image is loaded.").font(.largeTitle).foregroundColor(.white)
+							LottieView(name: "progressView")
+								.background(Color.black)
+						}
+						// An image succesfully loaded.
+					case .success(let image):
+						image
+							.resizable()
+							.scaledToFill()
+							.ignoresSafeArea()
+					case .failure(let error):
+						Text("An image failed to load with an error- \(error.localizedDescription)")
+					default: ProgressView()
+				}
+			}
+			
+			//			AsyncImage(url: URL(string: "http://167.99.51.18/media/wallpapers/static/Meal/3171134.jpg")) {
+			//				remote in
+			//				if let image = remote.image {
+			//					image
+			//						.resizable()
+			//						.scaledToFill()
+			//						.ignoresSafeArea()
+			//				} else if remote.error != nil {
+			//					Image("bigR2")
+			//						.resizable()
+			//						.scaledToFill()
+			//						.ignoresSafeArea()
+			//				} else {
+			//					LottieView(name: "progressView")
+			//				}
+			//			} // AsyncImage
 			
 			// MARK: - isPreview
 			if isPreview {
@@ -39,8 +72,8 @@ struct DetailWallpaperView: View {
 							.font(.system(size: 22, weight: .semibold))
 						
 						//Text(Date.now.formatted(.dateTime.hour().minute()))
-//						Text("\(Calendar.current.component(.hour, from: .now)):\(Calendar.current.component(.minute, from: .now))")
-//							.font(.system(size: 83, weight: .light))
+						//						Text("\(Calendar.current.component(.hour, from: .now)):\(Calendar.current.component(.minute, from: .now))")
+						//							.font(.system(size: 83, weight: .light))
 						
 					}
 					.foregroundColor(.white)

@@ -66,7 +66,7 @@ struct SecondScreenView: View {
 //					Image(systemName: "circle.dashed")
 //						.font(.system(size: 20))
 //						.foregroundColor(.white)
-					LottieView(name: "loadingWheel", loopMode: .loop)
+					LottieView(name: "progressView", loopMode: .loop)
 
 					GridView()
 						.padding(.top, 9)

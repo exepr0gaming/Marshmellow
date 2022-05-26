@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+	
+	@StateObject var networkService = NetworkService()
+	
     var body: some View {
 			ScrollView(.vertical, showsIndicators: false) {
 				
@@ -35,7 +38,7 @@ struct MainView: View {
 					
 					// MARK: - Triple Carousels
 					VStack(spacing: 18) {
-						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, newCategories: newCatData)
+						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, newCategories: newCatData, networkService: networkService)
 						
 						PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, popularCat: popularCatData)
 							.padding(.top, 8) // // 26 - 18 from VStack spacing

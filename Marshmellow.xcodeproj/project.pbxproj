@@ -49,7 +49,7 @@
 		842AB06D283BCF3000C6CD6E /* congratulations.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB067283BCF2F00C6CD6E /* congratulations.json */; };
 		842AB06E283BCF3000C6CD6E /* gladToSeeYou.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB068283BCF2F00C6CD6E /* gladToSeeYou.json */; };
 		842AB06F283BCF3000C6CD6E /* button.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB069283BCF3000C6CD6E /* button.json */; };
-		842AB070283BCF3000C6CD6E /* loadingWheel.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB06A283BCF3000C6CD6E /* loadingWheel.json */; };
+		842AB070283BCF3000C6CD6E /* progressView.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB06A283BCF3000C6CD6E /* progressView.json */; };
 		842AB071283BCF3000C6CD6E /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB06B283BCF3000C6CD6E /* welcome.json */; };
 		842AB072283BCF3000C6CD6E /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 842AB06C283BCF3000C6CD6E /* splash.json */; };
 		842AB075283BD11D00C6CD6E /* SplashScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AB074283BD11D00C6CD6E /* SplashScreenTests.swift */; };
@@ -69,6 +69,8 @@
 		84B32046283ED12B00042076 /* CongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32045283ED12B00042076 /* CongratulationsView.swift */; };
 		84B32049283EDA1200042076 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32048283EDA1200042076 /* View + Extension.swift */; };
 		84E0D0C2283E5D4E0067915D /* UIScreen + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0D0C1283E5D4E0067915D /* UIScreen + Extension.swift */; };
+		84E327E2283EFCB300B27000 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E327E1283EFCB300B27000 /* NetworkService.swift */; };
+		84E327E4283EFEFF00B27000 /* WallpaperApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E327E3283EFEFF00B27000 /* WallpaperApiModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,7 +101,7 @@
 		842AB067283BCF2F00C6CD6E /* congratulations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = congratulations.json; sourceTree = "<group>"; };
 		842AB068283BCF2F00C6CD6E /* gladToSeeYou.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gladToSeeYou.json; sourceTree = "<group>"; };
 		842AB069283BCF3000C6CD6E /* button.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = button.json; sourceTree = "<group>"; };
-		842AB06A283BCF3000C6CD6E /* loadingWheel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingWheel.json; sourceTree = "<group>"; };
+		842AB06A283BCF3000C6CD6E /* progressView.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = progressView.json; sourceTree = "<group>"; };
 		842AB06B283BCF3000C6CD6E /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		842AB06C283BCF3000C6CD6E /* splash.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = splash.json; sourceTree = "<group>"; };
 		842AB074283BD11D00C6CD6E /* SplashScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenTests.swift; sourceTree = "<group>"; };
@@ -135,6 +137,8 @@
 		84B32047283ED84500042076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B32048283EDA1200042076 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		84E0D0C1283E5D4E0067915D /* UIScreen + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen + Extension.swift"; sourceTree = "<group>"; };
+		84E327E1283EFCB300B27000 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		84E327E3283EFEFF00B27000 /* WallpaperApiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallpaperApiModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,8 @@
 			children = (
 				842AB0252837B00F00C6CD6E /* ImageLoader.swift */,
 				844AC85B283CD9C1005818C3 /* LoopingPlayer.swift */,
+				84E327E1283EFCB300B27000 /* NetworkService.swift */,
+				84E327E3283EFEFF00B27000 /* WallpaperApiModel.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -280,7 +286,7 @@
 				842AB069283BCF3000C6CD6E /* button.json */,
 				842AB067283BCF2F00C6CD6E /* congratulations.json */,
 				842AB068283BCF2F00C6CD6E /* gladToSeeYou.json */,
-				842AB06A283BCF3000C6CD6E /* loadingWheel.json */,
+				842AB06A283BCF3000C6CD6E /* progressView.json */,
 				842AB06C283BCF3000C6CD6E /* splash.json */,
 				842AB06B283BCF3000C6CD6E /* welcome.json */,
 			);
@@ -435,7 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				842AB070283BCF3000C6CD6E /* loadingWheel.json in Resources */,
+				842AB070283BCF3000C6CD6E /* progressView.json in Resources */,
 				842AAFF528354CEB00C6CD6E /* Nunito-SemiBold.ttf in Resources */,
 				84664928283520A4002B63EB /* Preview Assets.xcassets in Resources */,
 				842AAFF828354CEB00C6CD6E /* Nunito-BoldItalic.ttf in Resources */,
@@ -488,11 +494,13 @@
 				84E0D0C2283E5D4E0067915D /* UIScreen + Extension.swift in Sources */,
 				842AB00D2836D8B500C6CD6E /* PresentationContentE.swift in Sources */,
 				843155DE28354422006A429F /* PresentationVM.swift in Sources */,
+				84E327E4283EFEFF00B27000 /* WallpaperApiModel.swift in Sources */,
 				842AB0282837D1C900C6CD6E /* PopularCategoriesCardV.swift in Sources */,
 				8473D9E6283D3E7F001832F1 /* DetailWallpaperVM.swift in Sources */,
 				8473D9E4283D3897001832F1 /* BlurView.swift in Sources */,
 				842AB052283B86FA00C6CD6E /* PagerTabView.swift in Sources */,
 				842AB01B28379BE400C6CD6E /* NewCategoriesCardV.swift in Sources */,
+				84E327E2283EFCB300B27000 /* NetworkService.swift in Sources */,
 				844AC860283CE941005818C3 /* TabBarMenuView.swift in Sources */,
 				84B32049283EDA1200042076 /* View + Extension.swift in Sources */,
 				84664921283520A1002B63EB /* MarshmellowApp.swift in Sources */,

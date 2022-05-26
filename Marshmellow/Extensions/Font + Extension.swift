@@ -62,8 +62,6 @@ struct MainFrameInfinityModifier: ViewModifier {
 	}
 }
 
-
-
 enum FontsE: String {
 	case nunitoRegular = "Nunito-Regular"
 	case nunitoSemiBold = "Nunito-SemiBold"
