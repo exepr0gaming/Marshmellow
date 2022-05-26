@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBarMenuView: View {
 	
 	@State private var selection = 1
+	@StateObject var wallpapers = WallpapersFetcher()
 //	let home = UIImage(named: "home")!.withTintColor(.red, renderingMode: .alwaysOriginal)
 	
 	init() {
@@ -22,18 +23,18 @@ struct TabBarMenuView: View {
 	
     var body: some View {
 			TabView(selection: $selection) {
-				MainView()
+				MainView(wallpapers: wallpapers)
 					.tabItem {
 						tabItemLabel(imageName: "home", text: "Home")
 					}.tag(1)
 					
 				
-				SecondScreenView()
+				SecondScreenView(wallpaperFetcher: wallpapers)
 					.tabItem {
 						tabItemLabel(imageName: "brush", text: "Live")
 					}.tag(2)
 				
-				SecondScreenView()
+				SecondScreenView(wallpaperFetcher: wallpapers)
 					.tabItem {
 						tabItemLabel(imageName: "settings", text: "Settings")
 					}.tag(3)

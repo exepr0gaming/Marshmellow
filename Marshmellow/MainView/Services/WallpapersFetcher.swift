@@ -26,6 +26,9 @@ class WallpapersFetcher: ObservableObject {
 	
 	//@Published var wallpapers: [CategoryModel] = []
 	@Published var wallpapers: WallpaperApiModel = WallpaperApiModel(catStatic: [], newCats: [], popCats: [])
+	@Published var wallpaperCategory: [WallpaperCategoryModel] = []
+	//@Published var wallpaperSelectedCat: Int = 1
+	@Published var currentSelectionCat: Int = 0
 	@Published var errMessage: String? = nil
 	@Published var isLoading: Bool = false
 	
@@ -38,12 +41,35 @@ class WallpapersFetcher: ObservableObject {
 		errMessage = nil
 		let service = NetworkService()
 		
+		
 		service.fetchWallpapers(fetchUrl: FetchUrlsE.wallpapers.rawValue) { [unowned self] result in
 			DispatchQueue.main.async {
 				self.isLoading = false
 				switch result {
 					case .success(let wallpapers):
 						self.wallpapers = wallpapers
+						print("WTF DUDE= \(wallpapers.catStatic.last?.link)")
+					case .failure(let err):
+						self.errMessage = err.localizedDescription
+						print(err) // err.description
+				}
+			}
+			
+		}
+	}
+	
+	func fetchWallpaperCategory(linkCategory: String) {
+		isLoading = true
+		errMessage = nil
+		let service = NetworkService()
+		
+		service.fetch([WallpaperCategoryModel].self, fetchUrl: linkCategory) { [unowned self] result in
+			DispatchQueue.main.async {
+				self.isLoading = false
+				switch result {
+					case .success(let wallpaperCategory):
+						self.wallpaperCategory = wallpaperCategory
+						print("wallpaperCategory!!!= \(wallpaperCategory)")
 					case .failure(let err):
 						self.errMessage = err.localizedDescription
 						print(err) // err.description

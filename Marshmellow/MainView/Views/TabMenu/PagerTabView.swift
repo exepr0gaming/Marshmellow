@@ -120,7 +120,7 @@ extension View {
 
 struct PagerTabView_Previews: PreviewProvider {
 		static var previews: some View {
-			SecondScreenView()
+			SecondScreenView(wallpaperFetcher: WallpapersFetcher())
 		}
 }
 

@@ -9,40 +9,49 @@ import SwiftUI
 
 struct SecondScreenView: View {
 	
-	@State var currentSelection: Int = 0
-	var catNames: [String] = ["Live", "Animals", "Anime", "Animals"]
+//	@State var currentSelection: Int = 0
+	@ObservedObject var wallpaperFetcher: WallpapersFetcher
+	var catNames: [String] = ["Marshmello", "Animals", "Anime", "Live"]
 	
     var body: some View {
 			VStack {
 				
-				PagerTabView(selection: $currentSelection) { // tint: .black, 
-					ForEach(Array(catNames.enumerated()), id: \.offset) { index, name in
-						Text(name) // "i=\(index),cS=\(currentSelection), \(name)"
-							.nunitoFont(name: FontsE.nunitoBold.rawValue, size: 19, color: currentSelection == index ? .white : .cGray49)
-							.pageLabel()
+				VStack {
+					PagerTabView(selection: $wallpaperFetcher.currentSelectionCat) { // tint: .black,
+						ForEach(Array(catNames.enumerated()), id: \.offset) { index, name in
+							Text(name) // "i=\(index),cS=\(currentSelection), \(name)"
+								.nunitoFont(name: FontsE.nunitoBold.rawValue, size: 19, color: wallpaperFetcher.currentSelectionCat == index ? .white : .cGray49)
+								.minimumScaleFactor(0.75).lineLimit(1)
+								.pageLabel()
+							
+						}
+						.frame(height: 55)
+		//				Image(systemName: "house.fill")
+		//					.pageLabel()
+						
+					} content: {
+						// wallpaperFetcher.wallpapers.catStatic[1].link
+						GridView(wallpaperCategory: "/api/wallpapers/static/2", wallpaperFetcher: wallpaperFetcher)
+						
+						GridView(wallpaperCategory:  "/api/wallpapers/static/2", wallpaperFetcher: wallpaperFetcher)
+							.pageView(ignoresSafeArea: true, edges: .bottom)
+						
+						GridView(wallpaperCategory: "/api/wallpapers/static/2", wallpaperFetcher: wallpaperFetcher)
+							.pageView()
+						
+						GridView(wallpaperCategory:  "/api/wallpapers/static/2", wallpaperFetcher: wallpaperFetcher)
+							.pageView()
 					}
-					
-					//.frame(height: 55)
-	//				Image(systemName: "house.fill")
-	//					.pageLabel()
-					
-				} content: {
-					
-					GridView()
-						.pageView(ignoresSafeArea: true, edges: .bottom)
-					
-					GridView()
-						.pageView(ignoresSafeArea: true, edges: .bottom)
-					
-					GridView()
-						.pageView()
-					
-					GridView()
-						.pageView()
+					.frame(height: 680) // 680  // 55 + 5 + 620
 				}
-				.frame(height: 680) // 55 + 5 + 620
+				.padding(.horizontal, 11)
+				
 				//.padding(.top)
 				//.ignoresSafeArea(.container, edges: .bottom)
+				.onChange(of: wallpaperFetcher.currentSelectionCat) { newValue in
+					wallpaperFetcher.fetchWallpaperCategory(linkCategory: wallpaperFetcher.wallpapers.catStatic[wallpaperFetcher.currentSelectionCat].link)
+					print("Grid Changed")
+				}
 				
 				// MARK: - Текст и Реклама
 				VStack(alignment: .leading, spacing: 14) {
@@ -69,7 +78,7 @@ struct SecondScreenView: View {
 					LottieView(name: "progressView", loopMode: .loop)
 						.frame(width: 26, height: 26)
 
-					GridView()
+					GridView(wallpaperCategory: "/api/wallpapers/static/5", wallpaperFetcher: wallpaperFetcher)
 						.padding(.top, 9)
 				}
 				
@@ -81,6 +90,6 @@ struct SecondScreenView: View {
 
 struct SecondScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        SecondScreenView()
+			SecondScreenView(wallpaperFetcher: WallpapersFetcher())
     }
 }

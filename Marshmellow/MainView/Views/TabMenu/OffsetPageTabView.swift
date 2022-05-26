@@ -78,7 +78,7 @@ struct OffsetPageTabView<Content: View>: UIViewRepresentable {
 			//let currentSelection = (offset / maxSize).rounded()
 			let currentSelection = maxTabs / (maxSize / offset)
 			parent.selection = Int(currentSelection)
-			print("maxTabs= \(maxTabs), offset= \(offset), maxSize= \(maxSize), cS= \(currentSelection), intCS= \(Int(currentSelection))")
+//			print("maxTabs= \(maxTabs), offset= \(offset), maxSize= \(maxSize), cS= \(currentSelection), intCS= \(Int(currentSelection))")
 			
 			parent.offset = offset
 		}
@@ -88,6 +88,6 @@ struct OffsetPageTabView<Content: View>: UIViewRepresentable {
 
 struct OffsetPageTabView_Previews: PreviewProvider {
 	static var previews: some View {
-		SecondScreenView()
+		SecondScreenView(wallpaperFetcher: WallpapersFetcher())
 	}
 }

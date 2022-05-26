@@ -14,7 +14,7 @@ struct WelcomeAfterPresentationView: View {
     var body: some View {
 			
 			if isWelcome {
-				MainView()
+				MainView(wallpapers: WallpapersFetcher()) // TO-DO WHERE initialize?
 			} else {
 				
 			ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {

@@ -23,7 +23,6 @@
 		842AAFF828354CEB00C6CD6E /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846649302835218C002B63EB /* Nunito-BoldItalic.ttf */; };
 		842AAFF928354CEB00C6CD6E /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 846649322835218C002B63EB /* Nunito-ExtraBold.ttf */; };
 		842AAFFB2835A0E100C6CD6E /* PresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AAFFA2835A0E100C6CD6E /* PresentationView.swift */; };
-		842AAFFD28362E5E00C6CD6E /* BalooBhaijaan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 842AAFFC28362E5E00C6CD6E /* BalooBhaijaan-Regular.ttf */; };
 		842AB0012836360000C6CD6E /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AB0002836360000C6CD6E /* SplashScreenView.swift */; };
 		842AB00328363E2A00C6CD6E /* ConnectingToDBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AB00228363E2A00C6CD6E /* ConnectingToDBView.swift */; };
 		842AB0072836558200C6CD6E /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842AB0062836558200C6CD6E /* Color + Extension.swift */; };
@@ -69,6 +68,7 @@
 		847B328D283FBD73001A2A1F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B328C283FBD73001A2A1F /* ErrorView.swift */; };
 		847B328F283FC74B001A2A1F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B328E283FC74B001A2A1F /* NetworkService.swift */; };
 		847B329128401433001A2A1F /* NetworkEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847B329028401433001A2A1F /* NetworkEnums.swift */; };
+		847B329228401AC8001A2A1F /* BalooBhaijaan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 842AAFFC28362E5E00C6CD6E /* BalooBhaijaan-Regular.ttf */; };
 		84B32046283ED12B00042076 /* CongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32045283ED12B00042076 /* CongratulationsView.swift */; };
 		84B32049283EDA1200042076 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32048283EDA1200042076 /* View + Extension.swift */; };
 		84E0D0C2283E5D4E0067915D /* UIScreen + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0D0C1283E5D4E0067915D /* UIScreen + Extension.swift */; };
@@ -474,7 +474,7 @@
 				842AAFF928354CEB00C6CD6E /* Nunito-ExtraBold.ttf in Resources */,
 				844AC85E283CD9EE005818C3 /* live.mp4 in Resources */,
 				842AAFEB28354CAA00C6CD6E /* Nunito-Black.ttf in Resources */,
-				842AAFFD28362E5E00C6CD6E /* BalooBhaijaan-Regular.ttf in Resources */,
+				847B329228401AC8001A2A1F /* BalooBhaijaan-Regular.ttf in Resources */,
 				842AB06F283BCF3000C6CD6E /* button.json in Resources */,
 				842AB06D283BCF3000C6CD6E /* congratulations.json in Resources */,
 				842AAFEC28354CAD00C6CD6E /* Nunito-ExtraLight.ttf in Resources */,

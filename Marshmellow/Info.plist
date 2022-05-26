@@ -4,10 +4,10 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Nunito-Regular</string>
-		<string>Nunito-SemiBold</string>
-		<string>Nunito-Bold</string>
-		<string>BalooBhaijaan-Regular</string>
+		<string>Nunito-Regular.ttf</string>
+		<string>Nunito-SemiBold.ttf</string>
+		<string>Nunito-Bold.ttf</string>
+		<string>BalooBhaijaan-Regular.ttf</string>
 	</array>
 </dict>
 </plist>

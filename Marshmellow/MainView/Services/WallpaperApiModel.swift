@@ -27,7 +27,7 @@ struct WallpaperApiModel: Codable, Hashable {
 	
 }
 
-struct CategoryStatic {
+struct WallpaperCategoryModel: Codable, Hashable {
 	var url: String
 	var previewUrl: String
 	

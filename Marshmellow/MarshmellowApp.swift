@@ -17,8 +17,8 @@ struct MarshmellowApp: App {
 //						.preferredColorScheme(.dark)
 //					PresentationView()
 //						.preferredColorScheme(.dark)
-					//NewCategoriesCarouselView(titleView: "New Categories", wallpapers: WallpapersFetcher())
-					MainView()
+					//NewCategoriesCarouselView(titleView: "New Categories", wallpaperFetcher: WallpapersFetcher())
+					MainView(wallpapers: WallpapersFetcher()) // TO-DO WHERE initialize?
 					//SecondScreenView()
         }
 				

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
 	
-	@StateObject var wallpapers = WallpapersFetcher()
+	@ObservedObject var wallpapers: WallpapersFetcher
 	
     var body: some View {
 			
@@ -55,10 +55,10 @@ struct MainView: View {
 							.padding(.bottom, 17)
 						
 						LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue)
-							.padding(.bottom, 18)
+							//.padding(.bottom, 18)
 					}
 					
-					SecondScreenView()
+					SecondScreenView(wallpaperFetcher: wallpapers)
 					
 				
 					
@@ -68,6 +68,7 @@ struct MainView: View {
 			}
 			.background(Color.black)
 			.ignoresSafeArea()
+			
 //			.onAppear {
 //				wallpapers.fetch(fetchUrl: FetchUrlsE.wallpapers.rawValue)
 //				//print(wallpapers.wallpapers)
@@ -79,6 +80,6 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+			MainView(wallpapers: WallpapersFetcher())
     }
 }

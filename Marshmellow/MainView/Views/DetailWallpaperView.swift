@@ -22,7 +22,7 @@ struct DetailWallpaperView: View {
 				switch phase {
 					case .empty:
 						VStack {
-							Text("No image is loaded.").font(.largeTitle).foregroundColor(.white)
+							Text("Image is loaded.").font(.largeTitle).foregroundColor(.white)
 							LottieView(name: "progressView")
 								.background(Color.black)
 						}

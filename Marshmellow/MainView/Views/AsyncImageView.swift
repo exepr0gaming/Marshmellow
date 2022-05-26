@@ -22,7 +22,7 @@ struct AsyncImageView: View {
 						
 					case .empty:
 						VStack {
-							Text("No image is loaded.").font(.largeTitle).foregroundColor(.white)
+							Text("Image is loaded.").font(.largeTitle).foregroundColor(.white)
 							LottieView(name: "progressView")
 								.background(Color.black)
 						}
@@ -31,7 +31,7 @@ struct AsyncImageView: View {
 					case .success(let image):
 						image
 							.resizable()
-							.scaledToFit()
+							//.scaledToFit()
 							.aspectRatio(contentMode: contentMode)
 						
 					case .failure(let error):

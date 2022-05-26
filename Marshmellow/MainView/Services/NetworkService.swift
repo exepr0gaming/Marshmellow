@@ -10,8 +10,9 @@ import Foundation
 struct NetworkService {
 	
 	// MARK: - Fetch T
-	func fetch<T: Decodable>(_ type: T.Type, fetchUrl: FetchUrlsE.RawValue, completion: @escaping(Result<T, APIErrorE>) -> Void) {
+	func fetch<T: Decodable>(_ type: T.Type, fetchUrl: String, completion: @escaping(Result<T, APIErrorE>) -> Void) {
 		//isLoading = true
+		print("url!!!= \("http://167.99.51.18" + fetchUrl)")
 		guard let url = URL(string: "http://167.99.51.18" + fetchUrl) else {
 			let err = APIErrorE.badURL
 			completion(Result.failure(err))
