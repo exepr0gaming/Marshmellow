@@ -9,11 +9,18 @@ import SwiftUI
 
 struct PresentationView: View {
 	
-	@StateObject var presentationVM = PresentationVM()
+	//@State private var indexOffset: CGFloat = 0
+	//@State private var isPresented: Bool = false
+	@State private var animate: Bool = true
+	@ObservedObject var presentationVM: PresentationVM
 	
-    var body: some View {
-        
-			VStack {
+	var body: some View {
+		
+		if presentationVM.isPresented {
+			
+			TabBarMenuView()
+			
+		} else {
 			
 			GeometryReader { proxy in
 				HStack(spacing: 0) {
@@ -27,7 +34,7 @@ struct PresentationView: View {
 					ContentPresentationView(image: PresentationContentE.third.image, title: PresentationContentE.third.title, subTitle: PresentationContentE.third.subTitle, presentationVM: presentationVM)
 						.frame(width: proxy.size.width)
 					
-					WelcomeAfterPresentationView()
+					WelcomeAfterPresentationView(presentationVM: presentationVM)
 						.frame(width: proxy.size.width)
 					
 				}
@@ -35,41 +42,33 @@ struct PresentationView: View {
 				.animation(.easeIn, value: true)
 				.frame(height: proxy.size.height)
 				
-			}
-//			.mainFrameInfinity()
-			.ignoresSafeArea()
-				
-			.gesture(
-				DragGesture()
-					.onEnded({ value in
-						if value.translation.width > 10 {
-							if presentationVM.indexOffset > 0 {
-								presentationVM.indexOffset -= 1
-							}
-						} else if value.translation.width < -10 {
-							if presentationVM.indexOffset < 3 {
-								presentationVM.indexOffset += 1
+				.gesture(
+					DragGesture()
+						.onEnded{ value in
+							if value.translation.width > 10  {
+								if presentationVM.indexOffset > 0 {
+									presentationVM.indexOffset -= 1
+								}
+							} else if value.translation.width < -10  {
+								if presentationVM.indexOffset < 4 {
+									presentationVM.indexOffset += 1
+								}
 							}
 						}
-					})
-			)
-			
-
-		
-			
-		}
+				).animation(.easeIn, value: animate)
+				
+			}
 			.ignoresSafeArea()
 			.background(Color.black)
 			
-			
-			
-			
-    }
-
+		} // else
+		
+		
+	}
 }
 
 struct PresentationView_Previews: PreviewProvider {
-    static var previews: some View {
-        PresentationView()
-    }
+	static var previews: some View {
+		PresentationView(presentationVM: PresentationVM())
+	}
 }

@@ -11,47 +11,69 @@ import SwiftUI
 struct SplashScreenView: View {
 	
 	@State private var isActive = false
-//	@State private var size = 0.8 // optional
-//	@State private var opacity = 0.5 // optional
+	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	@EnvironmentObject var adMobService: AdMobService
+	
+	//init() { adMobService.adStarted() }
 	
     var body: some View {
+			
+//			if wallpapersFetcher.isLoading {
+//				//LoadingView()
+//			} else if wallpapersFetcher.errMessage != nil {
+//				ErrorView()
+//			} else {
+//				// all content from bottom
+//			}
+			
+			// MARK: - TO-DO changes
 			if isActive {
 				ConnectingToDBView()
 					.preferredColorScheme(.dark)
+				
+			} else if wallpapersFetcher.errMessage != nil {
+				ErrorView()
 			} else {
 				
-					ZStack {
+				ZStack {
+				
+				Image("presentationBG1")
+						.resizable()
+						.scaledToFill()
+					
+					VStack {
+						LottieView(name: "splash", loopMode: .autoReverse)
+							//.frame(maxHeight: 122) // 144 for ipad
 						
-						Image("presentationBG1")
+						Spacer()
+						
+						Image("man1")
 							.resizable()
-							.scaledToFill()
-						
-						VStack {
-							LottieView(name: "splash", loopMode: .autoReverse)
-								//.frame(maxHeight: 122) // 144 for ipad
+							.aspectRatio(contentMode: .fill)
+//							.frame(width: getScreenBounds().width, height: getScreenBounds().height * 0.66)
 							
-							Spacer()
-							
-							Image("man1")
-								.resizable()
-								.aspectRatio(contentMode: .fill)
-	//							.frame(width: getScreenBounds().width, height: getScreenBounds().height * 0.66)
-								
-						}
-						.padding(.top, UIScreen.screenHeight / 6)
-						
-						.onAppear {
-							DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-								withAnimation {
-									self.isActive = true
-								}
+					}
+					.padding(.top, UIScreen.screenHeight / 6)
+					
+					.onAppear {
+						DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+							withAnimation {
+								self.isActive = true
 							}
 						}
-					
-				}
-				.ignoresSafeArea()
-				.background(Color.black)
-			} // else
+					}
+				
+			}
+			.ignoresSafeArea()
+			.background(Color.black)
+//			.onAppear {
+//				adMobService.adStarted()
+//			}
+		} // else
+			
+			
+				
+				
 			
     }
 }

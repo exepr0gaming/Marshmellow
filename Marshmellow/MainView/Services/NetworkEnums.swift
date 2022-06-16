@@ -8,8 +8,10 @@
 import Foundation
 
 enum FetchUrlsE: String {
-	case wallpapers = "/api/wallpapers/"
-	case live = "/wallpapers/live/"
+	case apiURL = "http://159.223.194.4"
+	case allWalls = "/api/wallpapers/"
+	case staticW = "/api/wallpapers/static2/"
+	case live = "/api/wallpapers/live2/"
 }
 
 enum APIErrorE: Error, CustomStringConvertible {

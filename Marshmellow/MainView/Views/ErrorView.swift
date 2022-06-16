@@ -9,18 +9,32 @@ import SwiftUI
 
 struct ErrorView: View {
 	
-	@ObservedObject var wallpapers: WallpapersFetcher
+	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
 	
     var body: some View {
 			VStack {
-				Text(wallpapers.errMessage ?? "")
+				LottieView(name: "connectingBlack")
+				
+				Text(wallpapersFetcher.errMessage ?? "")
 					.font(.largeTitle)
+				
+				Button {
+					Task.init {
+						await wallpapersFetcher.fetchAllWallpapers()
+					}
+				} label: {
+					Text("Try again")
+				}
+
 			}
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+			.ignoresSafeArea()
+			.background(Color.black)
     }
 }
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-			ErrorView(wallpapers: WallpapersFetcher())
+			ErrorView().environmentObject(WallpapersFetcher())
     }
 }

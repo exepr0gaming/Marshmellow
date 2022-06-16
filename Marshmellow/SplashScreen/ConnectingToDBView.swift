@@ -11,12 +11,22 @@ import Lottie
 struct ConnectingToDBView: View {
 	
 	@State private var isActive: Bool = false
+	@StateObject var presentationVM = PresentationVM()
 	
     var body: some View {
 		
-			if isActive {
-				PresentationView()
+			if isActive && !presentationVM.shownThePresentation {
+				
+				// TO-DO add load reklama =)
+				PresentationView(presentationVM: presentationVM)
 					.preferredColorScheme(.dark)
+				
+			} else if isActive && presentationVM.shownThePresentation {
+				
+//				TabBarMenuView()
+//					.preferredColorScheme(.dark)
+				GladToSeeYouAgainView()
+				
 			} else {
 				VStack {
 					LottieView(name: "connectingBlack", loopMode: .loop)
@@ -29,8 +39,7 @@ struct ConnectingToDBView: View {
 							.nunitoFont(name: FontsE.nunitoSemiBold.rawValue, size: 24)
 					}
 					.padding(.bottom, 200)
-					//.frame(height: getScreenBounds().height / 2)
-					//.frame(minHeight: getScreenBounds().height / 2)
+					
 				}
 				.mainFrameInfinity()
 				.ignoresSafeArea()
@@ -52,6 +61,6 @@ struct ConnectingToDBView: View {
 
 struct ConnectingToDBView_Previews: PreviewProvider {
     static var previews: some View {
-        ConnectingToDBView()
+			ConnectingToDBView(presentationVM: PresentationVM())
     }
 }

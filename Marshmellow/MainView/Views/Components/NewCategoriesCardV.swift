@@ -9,9 +9,6 @@ import SwiftUI
 
 struct NewCategoriesCard: View {
 	
-	//let wallpaper: NewCategoriesM
-	//@ObservedObject var imageLoader = ImageLoader()
-	
 	let title: String
 	let imageStr: String
 	
@@ -35,8 +32,8 @@ struct NewCategoriesCard: View {
 	}
 }
 
-struct NewCategoriesCard_Previews: PreviewProvider {
-    static var previews: some View {
-			NewCategoriesCard(title: "Art", imageStr: "art")
-    }
-}
+//struct NewCategoriesCard_Previews: PreviewProvider {
+//    static var previews: some View {
+//			NewCategoriesCard(title: "Art", imageStr: "art").environmentObject(WallpapersFetcher())
+//    }
+//}

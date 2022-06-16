@@ -9,16 +9,13 @@ import SwiftUI
 
 struct WelcomeAfterPresentationView: View {
 	
-	@State var isWelcome: Bool = false
+	//@Binding var isPresented: Bool
+	@ObservedObject var presentationVM: PresentationVM
 
     var body: some View {
-			
-			if isWelcome {
-				MainView(wallpapers: WallpapersFetcher()) // TO-DO WHERE initialize?
-			} else {
 				
 			ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
-				
+
 				Image(systemName: "xmark")
 					.font(.system(size: 20))
 					.foregroundColor(.white)
@@ -30,23 +27,14 @@ struct WelcomeAfterPresentationView: View {
 					
 					VStack(spacing: 14) {
 					
-						VStack(alignment: .leading, spacing: 14) {
-							Text("Lorem ipsum dolor sit amet?")
-								.nunitoFont(name: FontsE.nunitoSemiBold.rawValue, size: 17)
-							Text("Pertinax nec, in mei nostrum omittantur. Quo no orem ipsum dolor")
-								.fixedSize(horizontal: false, vertical: true)
-								.lineLimit(2)
-								.nunitoFont()
-						}
-						.padding(.horizontal)
-						
-						Rectangle()
-							.fill(Color.gray)
-							.frame(height: 190)
+						//AdsAndTextView()
+						NativeAdViewRepresentable()
+							.frame(width: getScreenBounds().width, height: 282)
 						
 						Button {
 							withAnimation {
-								isWelcome.toggle()
+								presentationVM.isPresented.toggle()
+								UserDefaults.standard.set(true, forKey: "shownThePresentation")
 							}
 						} label: {
 							ZStack {
@@ -58,21 +46,19 @@ struct WelcomeAfterPresentationView: View {
 									.nunitoFont(name: FontsE.nunitoSemiBold.rawValue, size: 20, color: .black)
 							}
 						}
-
 					}
 					
 				}
 				//.padding(.top, 50) // 22 xmark + 28
-			}
-			//.mainFrameInfinity()
-			.background(.black)
 			} // Main ZStack
+			.background(.black)
 			
     }
 }
 
-struct WelcomeAfterPresentationView_Previews: PreviewProvider {
-    static var previews: some View {
-			WelcomeAfterPresentationView(isWelcome: false)
-    }
-}
+//struct WelcomeAfterPresentationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//			WelcomeAfterPresentationView()
+//			//WelcomeAfterPresentationView(presentationVM: PresentationVM())
+//    }
+//}

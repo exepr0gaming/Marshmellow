@@ -10,7 +10,9 @@ import SwiftUI
 class DetailWallpaperVM: ObservableObject {
     
 	@Published var currentTime: Date = .now // need or ?
-	@Published var photoForSave: [Any] = []
+//	@Published var photoForSave: [Any] = []
+//	@Published var currentWallpaper: String = ""
+//	@Published var detailWallpaper: WallpaperCategoryUrlsModel = WallpaperCategoryUrlsModel(url: "", previewUrl: "")
 	
 	func getCurrentTime() -> String {
 		var result = ""
@@ -22,12 +24,21 @@ class DetailWallpaperVM: ObservableObject {
 		return result
 	}
 	
-	func shareWallpaper(_ photoString: String) {
-		let activityVC = UIActivityViewController(activityItems: [photoString], applicationActivities: nil)
+	func shareWallpaper(image: UIImage) {
+		let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
 		UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+	
+		// UIApplication.shared.getRootViewController()
+		
 		//guard let urlShare = URL(string: "https://developer.apple.com/xcode/swiftui") else { return }
 		//UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
 	}
+	
+//	func saveImage() {
+//		guard let inputImage = inputImage else { return }
+//		image = Image(uiImage: inputImage)
+//		UIImageWriteToSavedPhotosAlbum(inputImage, <#T##completionTarget: Any?##Any?#>, <#T##completionSelector: Selector?##Selector?#>, <#T##contextInfo: UnsafeMutableRawPointer?##UnsafeMutableRawPointer?#>)
+//	}
 	
 }
 
@@ -56,6 +67,12 @@ extension UIApplication {
 						.flatMap({ $0 as? UIWindowScene })?.windows
 						// Finally, keep only the key window
 						.first(where: \.isKeyWindow)
+		}
+	
+		func getRootViewController()->UIViewController{
+			guard let screen = self.connectedScenes.first as? UIWindowScene else { return .init() }
+			guard let root = screen.windows.first?.rootViewController else { return .init() }
+			return root
 		}
 		
 }

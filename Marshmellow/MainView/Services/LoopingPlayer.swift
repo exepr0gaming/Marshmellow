@@ -10,25 +10,32 @@ import AVFoundation
 
 struct LoopingPlayer: UIViewRepresentable {
 	var url: String
+	var isLocale: Bool
 	func updateUIView(_ uiView: UIView, context: Context) {}
 	func makeUIView(context: Context) -> UIView {
-		return QueuePlayerUIView(frame: .zero, url: url)
-		}
+		return QueuePlayerUIView(frame: .zero, url: url, isLocale: isLocale)
+	}
 }
 
 class QueuePlayerUIView: UIView {
 	private var playerLayer = AVPlayerLayer()
 	private var playerLooper: AVPlayerLooper?
 	var url: String
-
-	 init(frame: CGRect, url: String) {
-		 self.url = url
-		 super.init(frame: frame)
-		 
-		// Load Video
-		let fileUrl = Bundle.main.url(forResource: url, withExtension: "mp4")!
-		let playerItem = AVPlayerItem(url: fileUrl)
+	var isLocale: Bool
+	
+	//	private var fileUrl: URL = Bundle.main.url(forResource: "live", withExtension: "mp4")!
+	
+	init(frame: CGRect, url: String, isLocale: Bool) {
+		self.url = url
+		self.isLocale = isLocale
+		super.init(frame: frame)
 		
+		// Load Video
+		let fileUrl = (!isLocale
+									 ? URL(string: FetchUrlsE.apiURL.rawValue + url)
+									 : Bundle.main.url(forResource: url, withExtension: "mp4"))!
+		
+		let playerItem = AVPlayerItem(url: fileUrl)
 		// Setup Player
 		let player = AVQueuePlayer(playerItem: playerItem)
 		playerLayer.player = player
@@ -51,13 +58,13 @@ class QueuePlayerUIView: UIView {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder: has not been implemented")
 	}
-
-
+	
+	
 }
 
 
 struct LoopingPlayer_Previews: PreviewProvider {
-		static var previews: some View {
-			LoopingPlayer(url: "live")
-		}
+	static var previews: some View {
+		LoopingPlayer(url: "live", isLocale: false)
+	}
 }

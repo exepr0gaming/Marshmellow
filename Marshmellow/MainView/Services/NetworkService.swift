@@ -10,16 +10,17 @@ import Foundation
 struct NetworkService {
 	
 	// MARK: - Fetch T
-	func fetch<T: Decodable>(_ type: T.Type, fetchUrl: String, completion: @escaping(Result<T, APIErrorE>) -> Void) {
+	func fetch<T: Decodable>(_ type: T.Type, fetchUrl: String, completion: @escaping(Result<T, APIErrorE>) -> Void) async {
 		//isLoading = true
-		print("url!!!= \("http://167.99.51.18" + fetchUrl)")
-		guard let url = URL(string: "http://167.99.51.18" + fetchUrl) else {
+		guard let url = URL(string: FetchUrlsE.apiURL.rawValue + fetchUrl) else {
 			let err = APIErrorE.badURL
 			completion(Result.failure(err))
 			return
 		}
-		
-		URLSession.shared.dataTask(with: url) { (data, response, error) in
+		print("fetchURL!!!= \(url)")
+		let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+		//URLSession.shared.dataTask(with: url) { (data, response, error) in
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			if let err = error as? URLError { completion(Result.failure(APIErrorE.url(err))) }
 			if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
 				completion(Result.failure(APIErrorE.badResponse(statusCode: response.statusCode)))
@@ -37,15 +38,17 @@ struct NetworkService {
 	} // Fetch T
 	
 	// MARK: - Fetch Wallpapers
-	func fetchWallpapers(fetchUrl: FetchUrlsE.RawValue, completion: @escaping(Result<WallpaperApiModel, APIErrorE>) -> Void) {
+	func fetchWallpapers(fetchUrl: FetchUrlsE.RawValue, completion: @escaping(Result<WallpaperApiModel, APIErrorE>) -> Void) async {
 		//isLoading = true
-		guard let url = URL(string: "http://167.99.51.18" + fetchUrl) else {
+		guard let url = URL(string: FetchUrlsE.apiURL.rawValue + fetchUrl) else {
 			let err = APIErrorE.badURL
 			completion(Result.failure(err))
 			return
 		}
 		
-		URLSession.shared.dataTask(with: url) { (data, response, error) in
+		let request = URLRequest(url: url, cachePolicy: .returnCacheDataElseLoad)
+		//URLSession.shared.dataTask(with: url) { (data, response, error) in
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
 			// self?.isLoading = false // why here??
 			if let err = error as? URLError { completion(Result.failure(APIErrorE.url(err))) }
 			if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {

@@ -22,39 +22,48 @@ struct PagerTabView<Content: View, Label: View>: View {
 	@State var offset: CGFloat = 0
 	@State var maxTabs: CGFloat = 0
 	@State var tabOffset: CGFloat = 0
+	@State var scrollWidth: CGFloat = 0
 	
 		var body: some View {
 			
 			VStack(spacing: 0) {
-				HStack(spacing: 0) {
-					label
-				}
-				// For Tap to change tab
-				.overlay(
-					HStack(spacing: 0) {
-						ForEach(0..<Int(maxTabs), id: \.self) { index in
-							Rectangle()
-								.fill(Color.black.opacity(0.01))
-								.onTapGesture {
-									// Changing offset based on Index
-									let newOffset = CGFloat(index) * getScreenBounds().width
-									self.offset = newOffset
-								}
-						}
+				ScrollView(.horizontal, showsIndicators: false) {
+					HStack {
+						label
+							.offset(x: -tabOffset)
 					}
-				)
-				.padding(.vertical, 10)
-				//.foregroundColor(tint)
+					
+					.background(GeometryReader { proxy in Color.clear.onAppear {
+						scrollWidth = proxy.size.width }})
+					
+					// For Tap to change tab
+					.overlay(
+						HStack(spacing: 0) {
+							ForEach(0..<Int(maxTabs), id: \.self) { index in
+								Rectangle()
+									.fill(Color.black.opacity(0.01))
+									.onTapGesture {
+										// Changing offset based on Index
+										let newOffset = CGFloat(index) * getScreenBounds().width
+										self.offset = newOffset
+									}
+							}
+						}
+					)
+					.padding(.vertical, 10)
+					//.foregroundColor(tint)
+				}
 				
-				// Indicator
-				Capsule()
-					.fill(Color.cGreen)
-					.shadow(color: Color.cGreen, radius: 8, x: 0, y: 0)
-					.frame(width: maxTabs == 0 ? 0 : (getScreenBounds().width / maxTabs), height: 3)
-					.padding(.top, -8)
-					.padding(.bottom, 26)
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.offset(x: tabOffset)
+//				// Indicator
+//				Capsule()
+//					.fill(Color.cGreen)
+//					.shadow(color: Color.cGreen, radius: 8, x: 0, y: 0)
+//					.frame(width: maxTabs == 0 ? 0 : (getScreenBounds().width / maxTabs) - 6, height: 3)
+//					.padding(.top, -8)
+//					.padding(.bottom, 26)
+//					.padding(.leading, 6)
+//					.frame(maxWidth: .infinity, alignment: .leading)
+//					.offset(x: tabOffset)
 				
 				OffsetPageTabView(maxTabs: $maxTabs, selection: $selection, offset: $offset) {
 					HStack(spacing: 0) {
@@ -71,18 +80,25 @@ struct PagerTabView<Content: View, Label: View>: View {
 					// When value changes
 					.onPreferenceChange(TabPreferenceKey.self) { proxy in
 						let minX = -proxy.minX
-						let maxWidth = proxy.width
+						let maxWidth = proxy.width //proxy.width
 						let screenWidth = getScreenBounds().width
 						let maxTabs = (maxWidth / screenWidth).rounded()
 						self.maxTabs = maxTabs
 						
-						// Getting tab offset
+						 //Getting tab offset
 						let progress = minX / screenWidth
-						let tabOffset = progress * (screenWidth / maxTabs)
-						self.tabOffset = tabOffset
+//						let tabOffset = progress * (screenWidth / maxTabs)
+//						self.tabOffset = tabOffset
+						
+						if maxTabs - progress > 3 {
+							self.tabOffset = progress * ( scrollWidth / maxTabs)
+						}
+						//print("@@@minX=\(-proxy.minX), progress=\(progress), tabOffset=\(tabOffset)")
+					//	print("@@@tabOffset=\(tabOffset), scrollWidth= \(scrollWidth)")
 					}
 				}
 			}
+			
 			
 		}
 }
@@ -95,17 +111,17 @@ struct TabPreferenceKey: PreferenceKey {
 	}
 }
 
-// Extending view for PageLabel and PageView Modifiers
+// Extending view for PageLabel and gridViewSettings Modifiers
 extension View {
-	func pageLabel() -> some View {
-		// just filling all empty space
-		self
-			.frame(maxWidth: .infinity, alignment: .center)
-	}
+//	func pageLabel() -> some View {
+//		// just filling all empty space
+//		self
+//			.frame(maxWidth: .infinity, alignment: .center)
+//	}
 	
 	// Modifications for SafeArena ignoring
 	// Same for PageView
-	func pageView(ignoresSafeArea: Bool = false, edges: Edge.Set = []) -> some View {
+	func gridViewSettings(ignoresSafeArea: Bool = false, edges: Edge.Set = []) -> some View {
 		// just filling all empty space
 		self
 			.frame(width: getScreenBounds().width, alignment: .center)
@@ -118,11 +134,11 @@ extension View {
 	}
 }
 
-struct PagerTabView_Previews: PreviewProvider {
-		static var previews: some View {
-			SecondScreenView(wallpaperFetcher: WallpapersFetcher())
-		}
-}
+//struct PagerTabView_Previews: PreviewProvider {
+//		static var previews: some View {
+//			SecondScreenView(linkToFetchCategory: "")
+//		}
+//}
 
 
 

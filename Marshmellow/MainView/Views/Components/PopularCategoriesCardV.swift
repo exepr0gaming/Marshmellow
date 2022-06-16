@@ -10,18 +10,19 @@ import SwiftUI
 struct PopularAndLiveCardV: View {
 	
 	var imageStr: String
+	//var wallpaperCat: CategoryModel
 	
     var body: some View {
 			
-			AsyncImageView(imageStr: imageStr)
-				.frame(width: 352, height: 176)
-				.cornerRadius(8)
+				AsyncImageView(imageStr: imageStr)
+					.frame(width: 352, height: 176)
+					.cornerRadius(6)
 			
     }
 }
 
 //struct PopularCategoriesCardView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        PopularCategoriesCardV()
+//        PopularCategoriesCardV().environmentObject(WallpapersFetcher())
 //    }
 //}

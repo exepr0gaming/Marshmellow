@@ -42,6 +42,6 @@ struct TitleAndArrowInLineView: View {
 
 struct TitleAndArrowInLineView_Previews: PreviewProvider {
     static var previews: some View {
-			TitleAndArrowInLineView(title: "Install")
+			TitleAndArrowInLineView(title: "Install").environmentObject(WallpapersFetcher())
     }
 }

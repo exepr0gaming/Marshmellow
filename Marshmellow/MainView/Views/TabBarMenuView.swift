@@ -10,36 +10,41 @@ import SwiftUI
 struct TabBarMenuView: View {
 	
 	@State private var selection = 1
-	@StateObject var wallpapers = WallpapersFetcher()
+	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	//@StateObject var wallpapersFetcher = WallpapersFetcher()
 //	let home = UIImage(named: "home")!.withTintColor(.red, renderingMode: .alwaysOriginal)
 	
 	init() {
-		UITabBar.appearance().isTranslucent = false
+		//UITabBar.appearance().isTranslucent = false
 		UITabBar.appearance().unselectedItemTintColor = .white
 		UITabBar.appearance().barTintColor = UIColor.black
-		UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.init(name: FontsE.nunitoBold.rawValue, size: 12)!], for: .normal)
-		UITabBarItem.appearance().titlePositionAdjustment.vertical = 0
+//		UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.init(name: FontsE.nunitoBold.rawValue, size: 12)!], for: .normal)
+//		UITabBarItem.appearance().titlePositionAdjustment.vertical = 0
+//		UITabBar.appearance(for: .init(horizontalSizeClass: UIUserInterfaceSizeClass.regular))
 		}
 	
     var body: some View {
 			TabView(selection: $selection) {
-				MainView(wallpapers: wallpapers)
+				MainView()
 					.tabItem {
 						tabItemLabel(imageName: "home", text: "Home")
 					}.tag(1)
-					
 				
-				SecondScreenView(wallpaperFetcher: wallpapers)
+				//LiveWithMenuView()
+				//LiveVideoView()
+				SecondScreenView(isOpens: false, gridFor: .liveCat)
 					.tabItem {
 						tabItemLabel(imageName: "brush", text: "Live")
 					}.tag(2)
+					
 				
-				SecondScreenView(wallpaperFetcher: wallpapers)
+				SettingsView()
 					.tabItem {
 						tabItemLabel(imageName: "settings", text: "Settings")
 					}.tag(3)
 			} // TabView
 			.accentColor(.cGreen)
+			.background(.black)
 			
     } // body
 	
