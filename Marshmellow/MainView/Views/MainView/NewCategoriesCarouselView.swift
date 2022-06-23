@@ -12,6 +12,7 @@ struct NewCategoriesCarouselView: View {
 	let titleView: String
 	
 	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	@ObservedObject var tabData: TabDataModel
 	
     var body: some View {
         
@@ -26,7 +27,7 @@ struct NewCategoriesCarouselView: View {
 							ForEach(self.wallpapersFetcher.wallpapers.newCats, id: \.self) { wallpaper in
 							
 								NavigationLink {
-									SecondScreenView(isOpens: true, gridFor: .staticCat) // category: wallpaper, 
+									SecondScreenView(tabSelection: $tabData.currentTab, isOpens: true, gridFor: .staticCat) // category: wallpaper,
 										.onAppear {
 												wallpapersFetcher.linkToFetchCategory = wallpaper.link
 											print("NewsCats linkToFetchCategory= \(wallpapersFetcher.linkToFetchCategory)")
@@ -46,8 +47,8 @@ struct NewCategoriesCarouselView: View {
     }
 }
 
-struct NewCategoriesCarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-			NewCategoriesCarouselView(titleView: "New Categories").environmentObject(WallpapersFetcher())
-    }
-}
+//struct NewCategoriesCarouselView_Previews: PreviewProvider {
+//    static var previews: some View {
+//			NewCategoriesCarouselView(titleView: "New Categories").environmentObject(WallpapersFetcher())
+//    }
+//}

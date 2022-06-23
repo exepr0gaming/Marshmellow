@@ -100,6 +100,25 @@
 		847C48F628594C1C00E49666 /* StaticDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C48F528594C1C00E49666 /* StaticDetailView.swift */; };
 		847C48F828594C2700E49666 /* LiveDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C48F728594C2700E49666 /* LiveDetailView.swift */; };
 		847C4914285B68B400E49666 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C4913285B68B400E49666 /* NotificationManager.swift */; };
+		847C491728607DB200E49666 /* BackArrowAndNavTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C491628607DB100E49666 /* BackArrowAndNavTitleView.swift */; };
+		847C491B2860A7ED00E49666 /* AssembleLivePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C491A2860A7ED00E49666 /* AssembleLivePhotoViewController.swift */; };
+		847C491D2860A87900E49666 /* BaseLivePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C491C2860A87900E49666 /* BaseLivePhotoViewController.swift */; };
+		847C491F2860ACAD00E49666 /* LivePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C491E2860ACAD00E49666 /* LivePhoto.swift */; };
+		847C49232861D34700E49666 /* LivePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C49222861D34700E49666 /* LivePhotoView.swift */; };
+		847C49252861D41600E49666 /* LivePhotoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C49242861D41600E49666 /* LivePhotoPresenter.swift */; };
+		847C49272861D4F700E49666 /* VideoToLivePhotoConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C49262861D4F700E49666 /* VideoToLivePhotoConverter.swift */; };
+		847C49292861D53900E49666 /* FileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C49282861D53900E49666 /* FileHandler.swift */; };
+		847C492B28632D7900E49666 /* UIDevice + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C492A28632D7900E49666 /* UIDevice + Extension.swift */; };
+		84A1335F28646FF700E7F7B6 /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1335E28646FF700E7F7B6 /* YandexMobileMetrica */; };
+		84A1336128646FF700E7F7B6 /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1336028646FF700E7F7B6 /* YandexMobileMetricaCrashes */; };
+		84A1336528648B7E00E7F7B6 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1336428648B7E00E7F7B6 /* FacebookCore */; };
+		84A1336728648B7E00E7F7B6 /* FacebookGamingServices in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1336628648B7E00E7F7B6 /* FacebookGamingServices */; };
+		84A1336A2864917200E7F7B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 84A133692864917200E7F7B6 /* FirebaseAnalytics */; };
+		84A1336C2864917200E7F7B6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1336B2864917200E7F7B6 /* FirebaseAnalyticsOnDeviceConversion */; };
+		84A1336E2864917200E7F7B6 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1336D2864917200E7F7B6 /* FirebaseAnalyticsSwift */; };
+		84A133702864917200E7F7B6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 84A1336F2864917200E7F7B6 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		84A133722864917200E7F7B6 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 84A133712864917200E7F7B6 /* FirebaseAppCheck */; };
+		84A133742864964B00E7F7B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A133732864964B00E7F7B6 /* GoogleService-Info.plist */; };
 		84B32046283ED12B00042076 /* CongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32045283ED12B00042076 /* CongratulationsView.swift */; };
 		84B32049283EDA1200042076 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B32048283EDA1200042076 /* View + Extension.swift */; };
 		84E0D0C2283E5D4E0067915D /* UIScreen + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E0D0C1283E5D4E0067915D /* UIScreen + Extension.swift */; };
@@ -200,6 +219,16 @@
 		847C48F528594C1C00E49666 /* StaticDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticDetailView.swift; sourceTree = "<group>"; };
 		847C48F728594C2700E49666 /* LiveDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDetailView.swift; sourceTree = "<group>"; };
 		847C4913285B68B400E49666 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		847C491628607DB100E49666 /* BackArrowAndNavTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackArrowAndNavTitleView.swift; sourceTree = "<group>"; };
+		847C491A2860A7ED00E49666 /* AssembleLivePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssembleLivePhotoViewController.swift; sourceTree = "<group>"; };
+		847C491C2860A87900E49666 /* BaseLivePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseLivePhotoViewController.swift; sourceTree = "<group>"; };
+		847C491E2860ACAD00E49666 /* LivePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhoto.swift; sourceTree = "<group>"; };
+		847C49222861D34700E49666 /* LivePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoView.swift; sourceTree = "<group>"; };
+		847C49242861D41600E49666 /* LivePhotoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoPresenter.swift; sourceTree = "<group>"; };
+		847C49262861D4F700E49666 /* VideoToLivePhotoConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoToLivePhotoConverter.swift; sourceTree = "<group>"; };
+		847C49282861D53900E49666 /* FileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHandler.swift; sourceTree = "<group>"; };
+		847C492A28632D7900E49666 /* UIDevice + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice + Extension.swift"; sourceTree = "<group>"; };
+		84A133732864964B00E7F7B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84B32045283ED12B00042076 /* CongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsView.swift; sourceTree = "<group>"; };
 		84B32047283ED84500042076 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B32048283EDA1200042076 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
@@ -214,8 +243,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A1336128646FF700E7F7B6 /* YandexMobileMetricaCrashes in Frameworks */,
+				84A1336528648B7E00E7F7B6 /* FacebookCore in Frameworks */,
+				84A1336A2864917200E7F7B6 /* FirebaseAnalytics in Frameworks */,
 				847A990628475D340034A661 /* GoogleMobileAds in Frameworks */,
+				84A133722864917200E7F7B6 /* FirebaseAppCheck in Frameworks */,
+				84A133702864917200E7F7B6 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				84A1336E2864917200E7F7B6 /* FirebaseAnalyticsSwift in Frameworks */,
+				84A1336C2864917200E7F7B6 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				84A1335F28646FF700E7F7B6 /* YandexMobileMetrica in Frameworks */,
 				84664941283521EB002B63EB /* Lottie in Frameworks */,
+				84A1336728648B7E00E7F7B6 /* FacebookGamingServices in Frameworks */,
 				84353BA1284664BF00957BAC /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,14 +261,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84209CEC28490D3500BE21F4 /* NativeTests */ = {
+		84209CEC28490D3500BE21F4 /* NativeAd */ = {
 			isa = PBXGroup;
 			children = (
 				84209CF128490E2600BE21F4 /* NativeAdView.xib */,
 				84209CEE28490D4300BE21F4 /* GADNativeViewController.swift */,
 				84209CED28490D4300BE21F4 /* NativeAdViewRepresentable.swift */,
 			);
-			path = NativeTests;
+			path = NativeAd;
 			sourceTree = "<group>";
 		};
 		84209D03284FA6F100BE21F4 /* LiveView */ = {
@@ -240,8 +278,8 @@
 				84209D08284FA80200BE21F4 /* LiveVideoView.swift */,
 				84209D0F285207A300BE21F4 /* GridLiveView2.swift */,
 				84209D0C284FAE4C00BE21F4 /* DetailLiveVideo.swift */,
-				84209D0A284FA9B400BE21F4 /* VideoCard.swift */,
 				84209D06284FA77E00BE21F4 /* VideoManager.swift */,
+				84209D0A284FA9B400BE21F4 /* VideoCard.swift */,
 			);
 			path = LiveView;
 			sourceTree = "<group>";
@@ -296,6 +334,7 @@
 				842AB0062836558200C6CD6E /* Color + Extension.swift */,
 				84E0D0C1283E5D4E0067915D /* UIScreen + Extension.swift */,
 				84B32048283EDA1200042076 /* View + Extension.swift */,
+				847C492A28632D7900E49666 /* UIDevice + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -317,6 +356,7 @@
 			children = (
 				842AB01A28379BE400C6CD6E /* NewCategoriesCardV.swift */,
 				842AB057283B9F1C00C6CD6E /* TitleAndArrowInLineView.swift */,
+				847C491628607DB100E49666 /* BackArrowAndNavTitleView.swift */,
 				842AB0272837D1C900C6CD6E /* PopularCategoriesCardV.swift */,
 				8473E8E22857599700540589 /* LottieView.swift */,
 			);
@@ -335,7 +375,6 @@
 				847C48EF2859463600E49666 /* GridAndMenuView */,
 				8473E8E42857613C00540589 /* IndividualViews */,
 				84E327E5283F9C1900B27000 /* AsyncImageView.swift */,
-				84353BA22846679D00957BAC /* SettingsView.swift */,
 				847B328C283FBD73001A2A1F /* ErrorView.swift */,
 				8473D9E7283E4014001832F1 /* ViewModels */,
 				842AB04E283B86DA00C6CD6E /* TabMenu */,
@@ -412,8 +451,11 @@
 		842AB073283BCFBD00C6CD6E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				84A1335C28644F4900E7F7B6 /* AdNotNeed */,
 				84209D01284F811900BE21F4 /* EmptyGridView.swift */,
 				842AB0242837A64600C6CD6E /* Data */,
+				847C49202861D0FE00E49666 /* LivePhotoTests */,
+				847C49212861D33400E49666 /* LivePhoto */,
 				842AB02E283AA53700C6CD6E /* MenuView.swift */,
 			);
 			path = Tests;
@@ -439,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				84B32047283ED84500042076 /* Info.plist */,
+				84A133732864964B00E7F7B6 /* GoogleService-Info.plist */,
 				84664920283520A1002B63EB /* MarshmellowApp.swift */,
 				842AB01828379BBF00C6CD6E /* MainView */,
 				842AB0132837955200C6CD6E /* SplashScreen */,
@@ -485,6 +528,7 @@
 			children = (
 				84B32045283ED12B00042076 /* CongratulationsView.swift */,
 				8473E8E52857616E00540589 /* GladToSeeYouAgainView.swift */,
+				84353BA22846679D00957BAC /* SettingsView.swift */,
 			);
 			path = IndividualViews;
 			sourceTree = "<group>";
@@ -492,23 +536,11 @@
 		847A990928479D1F0034A661 /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
-				84209CEC28490D3500BE21F4 /* NativeTests */,
-				847A990A284805BF0034A661 /* BannerAdVC.swift */,
-				847A990C284805F10034A661 /* BannerAd.swift */,
-				84209CE82848BDFB00BE21F4 /* BannerAdKavsoft.swift */,
-				847A990E284806430034A661 /* BannerAdView.swift */,
+				84209CEC28490D3500BE21F4 /* NativeAd */,
 				847A99102848073F0034A661 /* InterstitialAd.swift */,
 				847A99122848076C0034A661 /* InterstitialAdView.swift */,
-				847A991428480A090034A661 /* RewardedAd.swift */,
-				847A991628480A520034A661 /* RewardedAdView.swift */,
 				847A991828480BAE0034A661 /* FullScreenModifier.swift */,
-				847A9907284785A90034A661 /* RewardedAds.swift */,
-				847A991A28480C510034A661 /* TestAdmob.swift */,
 				84209CEA2849054300BE21F4 /* AdMobService.swift */,
-				84209CF52849FC6800BE21F4 /* NativeAdVC.swift */,
-				84209CF9284A0D3100BE21F4 /* NativeAd.swift */,
-				84209CF7284A070700BE21F4 /* NativeMediaView.swift */,
-				84209CFB284A2B1A00BE21F4 /* GadNativeView.swift */,
 			);
 			path = AdMob;
 			sourceTree = "<group>";
@@ -535,6 +567,46 @@
 			path = DetailView;
 			sourceTree = "<group>";
 		};
+		847C49202861D0FE00E49666 /* LivePhotoTests */ = {
+			isa = PBXGroup;
+			children = (
+				847C491A2860A7ED00E49666 /* AssembleLivePhotoViewController.swift */,
+				847C491E2860ACAD00E49666 /* LivePhoto.swift */,
+				847C491C2860A87900E49666 /* BaseLivePhotoViewController.swift */,
+			);
+			path = LivePhotoTests;
+			sourceTree = "<group>";
+		};
+		847C49212861D33400E49666 /* LivePhoto */ = {
+			isa = PBXGroup;
+			children = (
+				847C49222861D34700E49666 /* LivePhotoView.swift */,
+				847C49242861D41600E49666 /* LivePhotoPresenter.swift */,
+				847C49262861D4F700E49666 /* VideoToLivePhotoConverter.swift */,
+				847C49282861D53900E49666 /* FileHandler.swift */,
+			);
+			path = LivePhoto;
+			sourceTree = "<group>";
+		};
+		84A1335C28644F4900E7F7B6 /* AdNotNeed */ = {
+			isa = PBXGroup;
+			children = (
+				84209CF52849FC6800BE21F4 /* NativeAdVC.swift */,
+				84209CF9284A0D3100BE21F4 /* NativeAd.swift */,
+				84209CF7284A070700BE21F4 /* NativeMediaView.swift */,
+				84209CFB284A2B1A00BE21F4 /* GadNativeView.swift */,
+				847A9907284785A90034A661 /* RewardedAds.swift */,
+				847A991A28480C510034A661 /* TestAdmob.swift */,
+				847A991428480A090034A661 /* RewardedAd.swift */,
+				847A991628480A520034A661 /* RewardedAdView.swift */,
+				847A990A284805BF0034A661 /* BannerAdVC.swift */,
+				847A990C284805F10034A661 /* BannerAd.swift */,
+				84209CE82848BDFB00BE21F4 /* BannerAdKavsoft.swift */,
+				847A990E284806430034A661 /* BannerAdView.swift */,
+			);
+			path = AdNotNeed;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -555,6 +627,15 @@
 				84664940283521EB002B63EB /* Lottie */,
 				84353BA0284664BF00957BAC /* Introspect */,
 				847A990528475D340034A661 /* GoogleMobileAds */,
+				84A1335E28646FF700E7F7B6 /* YandexMobileMetrica */,
+				84A1336028646FF700E7F7B6 /* YandexMobileMetricaCrashes */,
+				84A1336428648B7E00E7F7B6 /* FacebookCore */,
+				84A1336628648B7E00E7F7B6 /* FacebookGamingServices */,
+				84A133692864917200E7F7B6 /* FirebaseAnalytics */,
+				84A1336B2864917200E7F7B6 /* FirebaseAnalyticsOnDeviceConversion */,
+				84A1336D2864917200E7F7B6 /* FirebaseAnalyticsSwift */,
+				84A1336F2864917200E7F7B6 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				84A133712864917200E7F7B6 /* FirebaseAppCheck */,
 			);
 			productName = Marshmellow;
 			productReference = 8466491D283520A1002B63EB /* Marshmellow.app */;
@@ -589,6 +670,9 @@
 				8466493F283521EB002B63EB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				84353B9F284664BF00957BAC /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				847A990428475D340034A661 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				84A1335D28646FF700E7F7B6 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
+				84A1336328648B7E00E7F7B6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8466491E283520A1002B63EB /* Products */;
 			projectDirPath = "";
@@ -619,6 +703,7 @@
 				847B329228401AC8001A2A1F /* BalooBhaijaan-Regular.ttf in Resources */,
 				842AB06F283BCF3000C6CD6E /* button.json in Resources */,
 				842AB06D283BCF3000C6CD6E /* congratulations.json in Resources */,
+				84A133742864964B00E7F7B6 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,12 +726,16 @@
 				842AB00F2836D94F00C6CD6E /* WelcomeAfterPresentationView.swift in Sources */,
 				847A990F284806430034A661 /* BannerAdView.swift in Sources */,
 				847A991528480A090034A661 /* RewardedAd.swift in Sources */,
+				847C491728607DB200E49666 /* BackArrowAndNavTitleView.swift in Sources */,
+				847C49292861D53900E49666 /* FileHandler.swift in Sources */,
 				842AB02A2837D54600C6CD6E /* PopularCategoriesCarouselView.swift in Sources */,
 				842AB0202837A39C00C6CD6E /* WallpaperModel.swift in Sources */,
 				842AB01E28379DF000C6CD6E /* NewCategoriesCarouselView.swift in Sources */,
+				847C491D2860A87900E49666 /* BaseLivePhotoViewController.swift in Sources */,
 				847A990D284805F20034A661 /* BannerAd.swift in Sources */,
 				84353BA32846679D00957BAC /* SettingsView.swift in Sources */,
 				844AC85C283CD9C1005818C3 /* LoopingPlayer.swift in Sources */,
+				847C492B28632D7900E49666 /* UIDevice + Extension.swift in Sources */,
 				842AB017283795D000C6CD6E /* MainView.swift in Sources */,
 				84209D07284FA77E00BE21F4 /* VideoManager.swift in Sources */,
 				842AB0072836558200C6CD6E /* Color + Extension.swift in Sources */,
@@ -655,6 +744,7 @@
 				847B328F283FC74B001A2A1F /* NetworkService.swift in Sources */,
 				8466494828353B46002B63EB /* Font + Extension.swift in Sources */,
 				842AB02F283AA53700C6CD6E /* MenuView.swift in Sources */,
+				847C491F2860ACAD00E49666 /* LivePhoto.swift in Sources */,
 				84B32046283ED12B00042076 /* CongratulationsView.swift in Sources */,
 				847C48F628594C1C00E49666 /* StaticDetailView.swift in Sources */,
 				84209CFA284A0D3100BE21F4 /* NativeAd.swift in Sources */,
@@ -669,6 +759,7 @@
 				842AB00D2836D8B500C6CD6E /* PresentationContentE.swift in Sources */,
 				843155DE28354422006A429F /* PresentationVM.swift in Sources */,
 				847C4914285B68B400E49666 /* NotificationManager.swift in Sources */,
+				847C49232861D34700E49666 /* LivePhotoView.swift in Sources */,
 				847A991B28480C510034A661 /* TestAdmob.swift in Sources */,
 				84E327E4283EFEFF00B27000 /* WallpaperApiModel.swift in Sources */,
 				842AB0282837D1C900C6CD6E /* PopularCategoriesCardV.swift in Sources */,
@@ -682,8 +773,10 @@
 				84353B8228443E2C00957BAC /* CacheAsyncImage.swift in Sources */,
 				84209CF028490D4300BE21F4 /* GADNativeViewController.swift in Sources */,
 				84E327E2283EFCB300B27000 /* WallpapersFetcher.swift in Sources */,
+				847C491B2860A7ED00E49666 /* AssembleLivePhotoViewController.swift in Sources */,
 				844AC860283CE941005818C3 /* TabBarMenuView.swift in Sources */,
 				84209CF8284A070700BE21F4 /* NativeMediaView.swift in Sources */,
+				847C49252861D41600E49666 /* LivePhotoPresenter.swift in Sources */,
 				84B32049283EDA1200042076 /* View + Extension.swift in Sources */,
 				8473E8E62857616E00540589 /* GladToSeeYouAgainView.swift in Sources */,
 				847A99112848073F0034A661 /* InterstitialAd.swift in Sources */,
@@ -701,6 +794,7 @@
 				84209CF62849FC6800BE21F4 /* NativeAdVC.swift in Sources */,
 				842AB00328363E2A00C6CD6E /* ConnectingToDBView.swift in Sources */,
 				842AB0122836DDFD00C6CD6E /* YellowButtonLabelView.swift in Sources */,
+				847C49272861D4F700E49666 /* VideoToLivePhotoConverter.swift in Sources */,
 				842AB00B28368E8D00C6CD6E /* ContentPresentationView.swift in Sources */,
 				842AB0012836360000C6CD6E /* SplashScreenView.swift in Sources */,
 				842AB056283B9A9800C6CD6E /* GridView.swift in Sources */,
@@ -950,6 +1044,30 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		84A1335D28646FF700E7F7B6 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yandexmobile/metrica-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		84A1336328648B7E00E7F7B6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -967,6 +1085,51 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 847A990428475D340034A661 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		84A1335E28646FF700E7F7B6 /* YandexMobileMetrica */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A1335D28646FF700E7F7B6 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
+			productName = YandexMobileMetrica;
+		};
+		84A1336028646FF700E7F7B6 /* YandexMobileMetricaCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A1335D28646FF700E7F7B6 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
+			productName = YandexMobileMetricaCrashes;
+		};
+		84A1336428648B7E00E7F7B6 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A1336328648B7E00E7F7B6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		84A1336628648B7E00E7F7B6 /* FacebookGamingServices */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A1336328648B7E00E7F7B6 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookGamingServices;
+		};
+		84A133692864917200E7F7B6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		84A1336B2864917200E7F7B6 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		84A1336D2864917200E7F7B6 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		84A1336F2864917200E7F7B6 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		84A133712864917200E7F7B6 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 84A133682864917200E7F7B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

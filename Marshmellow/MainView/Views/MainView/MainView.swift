@@ -10,9 +10,8 @@ import SwiftUI
 struct MainView: View {
 	
 	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
-	init() {
-		UINavigationBar.appearance().tintColor = .white
-	}
+	@ObservedObject var tabData: TabDataModel
+	
 	
     var body: some View {
 			NavigationView {
@@ -25,25 +24,20 @@ struct MainView: View {
 					
 						// MARK: - Triple Carousels
 					VStack {
-						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue)
+						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, tabData: tabData)
 							.padding(.bottom, 22)
 						
-						PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue)
+						PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue, tabData: tabData)
 							.padding(.bottom, 17)
 						
-						LiveCatCarouselView(titleView: WallpaperCategoriesE.liveCategoriesM.rawValue)
+						LiveCatCarouselView(tabData: tabData, titleView: WallpaperCategoriesE.liveCategoriesM.rawValue)
 							//.padding(.bottom, 18)
 					}
 					.padding(.horizontal, 11)
 					
 					// MARK: Grid + Menu
 					GridAndMenuView(isOpens: false, gridFor: .staticCat)
-					
-					
-//						.onAppear {
-//							wallpapersFetcher.fetchWallpaperCategory(linkCategory: wallpapersFetcher.linkToFetchCategory)
-//							//print("%%%###= \(wallpapersFetcher.wallpaperCategory.array[0].url)")
-//						}
+						.frame(height: getScreenBounds().height)
 					
 					// MARK: Advertising + Text
 						//AdsAndTextView()
@@ -51,8 +45,10 @@ struct MainView: View {
 					// MARK: Bottom Grid + Install
 						//BottomGridWithInstallView()
 				} // VStack
+				//.frame(maxWidth: .infinity)
 				
 			}
+			//.frame(maxWidth: .infinity)
 			//.mainFrameInfinity()
 			.background(Color.black)
 			.edgesIgnoringSafeArea(.bottom)
@@ -61,6 +57,11 @@ struct MainView: View {
 			.navigationBarHidden(true)
 			.navigationBarBackButtonHidden(true)
 			.accentColor(.white)
+				
+			.onAppear {
+				UINavigationBar.appearance().tintColor = .white
+				NotificationManager.shared.setAllNotificationsWithRequestAuthorization()
+			}
 			
 				///
 //			.toolbar {
@@ -69,16 +70,16 @@ struct MainView: View {
 //				}
 //			}
 			}
-			
+			.navigationViewStyle(StackNavigationViewStyle())
 
 			
 			
     }
 }
 
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-			MainView()
-				.environmentObject(WallpapersFetcher())
-    }
-}
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//			MainView()
+//				.environmentObject(WallpapersFetcher())
+//    }
+//}

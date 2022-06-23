@@ -25,13 +25,27 @@ struct PresentationView: View {
 			GeometryReader { proxy in
 				HStack(spacing: 0) {
 					
-					ContentPresentationView(image: PresentationContentE.first.image, title: PresentationContentE.first.title, subTitle: PresentationContentE.first.subTitle, presentationVM: presentationVM)
+					ContentPresentationView(
+						image: UIDevice.isIPhone ? PresentationContentE.first.image : PresentationContentE.first.imageIPad,
+						title: PresentationContentE.first.title,
+						subTitle: PresentationContentE.first.subTitle,
+						presentationVM: presentationVM)
 						.frame(width: proxy.size.width)
+						.padding(.top, UIDevice.isIPhone ? 0 : 78)
 					
-					ContentPresentationView(image: PresentationContentE.second.image, title: PresentationContentE.second.title, subTitle: PresentationContentE.second.subTitle, presentationVM: presentationVM)
+					ContentPresentationView(
+						image: UIDevice.isIPhone ? PresentationContentE.second.image : PresentationContentE.second.imageIPad,
+						title: PresentationContentE.second.title,
+						subTitle: PresentationContentE.second.subTitle,
+						presentationVM: presentationVM)
 						.frame(width: proxy.size.width)
+						.padding(.top, UIDevice.isIPhone ? 0 : 78)
 					
-					ContentPresentationView(image: PresentationContentE.third.image, title: PresentationContentE.third.title, subTitle: PresentationContentE.third.subTitle, presentationVM: presentationVM)
+					ContentPresentationView(
+						image: UIDevice.isIPhone ? PresentationContentE.third.image : PresentationContentE.third.imageIPad,
+						title: PresentationContentE.third.title,
+						subTitle: PresentationContentE.third.subTitle,
+						presentationVM: presentationVM)
 						.frame(width: proxy.size.width)
 					
 					WelcomeAfterPresentationView(presentationVM: presentationVM)
@@ -39,7 +53,7 @@ struct PresentationView: View {
 					
 				}
 				.offset(x: -(presentationVM.indexOffset * proxy.size.width))
-				.animation(.easeIn, value: true)
+				.animation(.easeIn, value: animate)
 				.frame(height: proxy.size.height)
 				
 				.gesture(

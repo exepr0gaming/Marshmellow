@@ -6,19 +6,31 @@
 //
 
 import SwiftUI
+import UIKit
 
 class NotificationManager {
 	static let shared = NotificationManager()
+	weak var tabBar: TabDataModel?
+	
+//	func userNotificationCenter(_ center: UNUserNotificationCenter,
+//															didReceive response: UNNotificationResponse,
+//															withCompletionHandler completionHandler: @escaping () -> Void) {
+//		_ = response.notification.request.content.userInfo
+//		tabBar?.goToLive()
+//		print("111tabBar?.goToLive()")
+//
+//			completionHandler()
+//	}
 	
 	func requestAuthorization() {
-		let options: UNAuthorizationOptions = [.alert, .sound, .badge, .provisional] // provisional - для тестового уведомления без разрешения пользователя
+		let options: UNAuthorizationOptions = [.alert, .sound, .badge, .provisional] // provisional - для тестового уведомления без разрешения пользователя (profit =)
 		UNUserNotificationCenter.current().requestAuthorization(options: options) { (success, err) in
-			switch success {
-				case true:
-					print("Success requestAuthorization True")
-				case false:
-					print("Success requestAuthorization False")
-			}
+//			switch success {
+//				case true:
+//					print("Success requestAuthorization True")
+//				case false:
+//					print("Success requestAuthorization False")
+//			}
 			if let err = err {
 				print("Error from requestAuthorization: \(err)")
 			}
@@ -44,7 +56,9 @@ class NotificationManager {
 		UNUserNotificationCenter.current().removeAllDeliveredNotifications()
 	}
 	
-	func setAllNotifications() {
+	func setAllNotificationsWithRequestAuthorization() {
+		requestAuthorization()
+		
 		// Sunday
 		setNotification(title: "Sunday Marshmello 😋", subtitle: "Decorate your phone🌻", 9, 15, weekday: 1)
 		setNotification(title: "What will you choose?", subtitle: "TwoSub", 13, 15, weekday: 1)
@@ -79,5 +93,10 @@ class NotificationManager {
 		setNotification(title: "New, New, New", subtitle: "Hundreds of amazing Wallpapers have been added!", 9, 15, weekday: 7)
 		setNotification(title: "Marshmello wallpaper😋", subtitle: "New wallpapers is available 🌟", 13, 15, weekday: 7)
 		setNotification(title: "Marshmello wallpaper😋", subtitle: "New Live wallpapers is available 🌟", 19, 15, weekday: 7)
+		
+		// tests
+		setNotification(title: "New, New, New", subtitle: "Hundreds of amazing Wallpapers have been added!", 13, 19, 0, weekday: 6)
+		setNotification(title: "Marshmello wallpaper😋", subtitle: "New wallpapers is available 🌟", 13, 19, 25, weekday: 6)
+		setNotification(title: "Marshmello wallpaper😋", subtitle: "New Live wallpapers is available 🌟", 13, 19, 35, weekday: 6)
 	}
 }

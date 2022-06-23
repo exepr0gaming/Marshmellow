@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-//import Lottie
+import Lottie
+import AppTrackingTransparency
 
 struct SplashScreenView: View {
 	
@@ -37,38 +38,49 @@ struct SplashScreenView: View {
 				
 				ZStack {
 				
-				Image("presentationBG1")
+					Image(UIDevice.isIPhone ? "bgIPhone" : "bgIPad")
 						.resizable()
 						.scaledToFill()
 					
 					VStack {
-						LottieView(name: "splash", loopMode: .autoReverse)
+						LottieView(name: "splash", loopMode: .loop)
 							//.frame(maxHeight: 122) // 144 for ipad
 						
 						Spacer()
 						
-						Image("man1")
+						Image(UIDevice.isIPhone ? "man1" : "ipad1")
 							.resizable()
 							.aspectRatio(contentMode: .fill)
 //							.frame(width: getScreenBounds().width, height: getScreenBounds().height * 0.66)
 							
 					}
 					.padding(.top, UIScreen.screenHeight / 6)
-					
-					.onAppear {
-						DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-							withAnimation {
-								self.isActive = true
-							}
-						}
+					.onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+						DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+										if #available(iOS 14, *) {
+												ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+														DispatchQueue.main.async {
+//																	self.bannerView.load(GADRequest())
+//																	self.interstitial.load(request)
+															withAnimation { self.isActive = true }
+														}
+												})
+										} else {
+												// Fallback on earlier versions
+										}
+								}
 					}
+//					.onAppear {
+//						DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//							withAnimation {
+//								self.isActive = true
+//							}
+//						}
+//					}
 				
 			}
 			.ignoresSafeArea()
 			.background(Color.black)
-//			.onAppear {
-//				adMobService.adStarted()
-//			}
 		} // else
 			
 			
@@ -76,6 +88,32 @@ struct SplashScreenView: View {
 				
 			
     }
+	
+//	func requestDataPermission() {
+//			if #available(iOS 14, *) {
+//					ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+//							switch status {
+//							case .authorized:
+//									// Tracking authorization dialog was shown
+//									// and we are authorized
+//									print("Authorized")
+//							case .denied:
+//									// Tracking authorization dialog was
+//									// shown and permission is denied
+//									print("Denied")
+//							case .notDetermined:
+//									// Tracking authorization dialog has not been shown
+//									print("Not Determined")
+//							case .restricted:
+//									print("Restricted")
+//							@unknown default:
+//									print("Unknown")
+//							}
+//					})
+//			} else {
+//					//you got permission to track, iOS 14 is not yet installed
+//			}
+//	}
 }
 
 struct SplashScreenView_Previews: PreviewProvider {

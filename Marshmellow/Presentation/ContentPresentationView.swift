@@ -23,6 +23,7 @@ struct ContentPresentationView: View {
 					.resizable()
 					.scaledToFit()
 					.edgesIgnoringSafeArea(.top)
+					.frame(maxWidth: image != "ipad4" ? 522 : .infinity)
 				
 				Spacer()
 			}
@@ -34,6 +35,8 @@ struct ContentPresentationView: View {
 						LinearGradient(colors: [.clear, .black], startPoint: .center, endPoint: .bottom)
 					)
 					.frame(height: 195)
+				
+				Color.cGray49.frame(height: 1)
 				
 				VStack { // for bgColor
 					
@@ -69,10 +72,11 @@ struct ContentPresentationView: View {
 					}
 					.padding(.top, 38)
 				}
+				.frame(width: getScreenBounds().width, height: UIDevice.isIPhone ? 267 : 360)
 				.background(.black)
-				.frame(height: 267) // UIScreen.screenHeight * 0.36
 				.padding(.bottom)
 			}
+			.padding(.bottom, UIDevice.isIPhone ? 0 : 38)
 		}
 }
 

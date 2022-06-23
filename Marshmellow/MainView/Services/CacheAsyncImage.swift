@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Кэш отключен, для включения просто дописать "Cache" перед Async в AsyncImageVIew
 struct CacheAsyncImage<Content>: View where Content: View {
 	
 	private let url: URL
@@ -50,26 +51,5 @@ fileprivate class ImageCache {
 		set { ImageCache.cache[url] = newValue }
 	}
 }
-
-//struct CacheAsyncImage_Previews: PreviewProvider {
-//    static var previews: some View {
-//			CacheAsyncImage(
-//				url: URL(string: "http://167.99.51.18/media/wallpapers/static/Various/4284291.jpg")) { phase in
-//						switch phase {
-//							case .empty:
-//								LottieView(name: "progressView").background(Color.black)
-//
-//							case .success(let image):
-//								image
-//									.resizable()
-//									.aspectRatio(contentMode: .fill)
-//
-//							case .failure():
-//								Text("Error")
-//							default: LottieView(name: "progressView").background(Color.black)
-//				}
-//    }
-//}
-//}
 
 

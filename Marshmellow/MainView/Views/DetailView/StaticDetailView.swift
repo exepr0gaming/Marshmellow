@@ -21,7 +21,7 @@ struct StaticDetailView: View {
 				Image(uiImage: imageLoader.image!)
 					.resizable()
 					.scaledToFill()
-					.ignoresSafeArea(.container, edges: .all)
+					.ignoresSafeArea()
 				
 			} else if imageLoader.errorMessage != nil {
 				VStack {

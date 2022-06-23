@@ -11,13 +11,7 @@ class PresentationVM: ObservableObject {
 	
 	@Published var indexOffset: CGFloat = 0
 	@Published var isPresented: Bool = false
-	//@Published var onGesture: Bool = true
 	@Published var shownThePresentation = UserDefaults.standard.bool(forKey: "shownThePresentation")
-	
-	init() {
-		print("shownThePresentation= \(shownThePresentation)")
-		print("PresentationVM ON!") }
-	deinit { print("PresentationVM OFF!") }
 	
 	static func printFonts()  -> some View {
 	//	ForEach(UIFont.familyNames.sorted(), id: \.self) { family in

@@ -15,6 +15,7 @@ import GoogleMobileAds
 		let interstitialAd = InterstitialAd.shared.interstitialAd
 		@Binding var isPresented: Bool
 		var adUnitId: String
+	 //@Binding var isShow: Bool
 		
 		init(isPresented: Binding<Bool>, adUnitId: String) {
 				self._isPresented = isPresented

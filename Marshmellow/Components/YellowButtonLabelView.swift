@@ -17,7 +17,8 @@ struct YellowButtonLabelView: View {
 					.nunitoFont(name: FontsE.nunitoBold.rawValue, size: 20, color: .black)
 			
 			.frame(height: 70)
-			.frame(maxWidth: .infinity)
+			.frame(maxWidth: 344)
+			//.frame(maxWidth: .infinity)
 			.background(Color.cYellow)
 			.cornerRadius(22)
 			.shadow(color: Color.cYellow.opacity(0.35), radius: 17, x: 0, y: 4)

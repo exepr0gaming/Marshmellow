@@ -10,6 +10,8 @@ import GoogleMobileAds
 
 class AdMobService: ObservableObject {
     
+	@Published var showIntersitialAd: Bool = false
+	
 	func adStarted(){
 		let ads = GADMobileAds.sharedInstance()
 		ads.start { status in

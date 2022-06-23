@@ -2,15 +2,10 @@
 //  WallpapersFetcher.swift
 //  Marshmellow
 //
-//  Created by Курдин Андрей on 26.05.2022.
+//  Created by Курдин Андрей
 //
 
 import SwiftUI
-
-//enum ConstsE: String {
-//	case apiUrl = "http://159.223.194.4"
-//	case testURL = "http://159.223.194.4/media/wallpapers/static/Various/4284291.jpg"
-//}
 
 class WallpapersFetcher: ObservableObject {
 	
@@ -131,21 +126,19 @@ class WallpapersFetcher: ObservableObject {
 							case .staticCat:
 								if detailCategoryUrl != nil {
 									self.detailCategory = getCategory
-									//self.catBlocksCount = self.detailCategory.array.count / 4
-									print("%%%fetchDetailCategory!!! Detail= \(self.detailCategory.array[0].url)")
+									print("%%%fetch detailCategory!!! StaticDetail= \(self.detailCategory.array[0].url)")
 								} else {
 									self.gridCategory = getCategory
-									print("%%%fetchGgridCategory!!! Detail= \(self.gridCategory.array[0].url)")
+									print("%%%fetch gridCategory!!! StaticGrid= \(self.gridCategory.array[0].url)")
 								}
 								
 							case .liveCat:
 								if detailCategoryUrl != nil {
 									self.detailLiveCat = getCategory
-									//self.catBlocksCount = self.detailCategory.array.count / 4
-									print("%%%fetchDetailCategory!!! Detail= \(self.detailCategory.array[0].url)")
+									print("%%%fetch detailLiveCat!!! LiveDetail= \(self.detailLiveCat.nameCategory)")
 								} else {
 									self.gridLiveCat = getCategory
-									print("%%%fetchGgridCategory!!! Detail= \(self.gridCategory.array[0].url)")
+									print("%%%fetch gridLiveCat!!! LiveGrid= \(self.gridLiveCat.nameCategory)")
 								}
 						}
 						

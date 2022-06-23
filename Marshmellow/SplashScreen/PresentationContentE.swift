@@ -19,6 +19,13 @@ enum PresentationContentE {
 			case .third: return "man4"
 		}
 	}
+	var imageIPad: String {
+		switch self {
+			case .first: return "ipad2"
+			case .second: return "ipad3"
+			case .third: return "ipad4"
+		}
+	}
 	
 	var title: String {
 		switch self {

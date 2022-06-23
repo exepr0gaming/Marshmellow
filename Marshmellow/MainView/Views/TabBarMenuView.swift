@@ -7,10 +7,34 @@
 
 import SwiftUI
 
+class TabDataModel: ObservableObject {
+	@Published var currentTab: TabE = .home
+	
+	func goToLive() {
+		currentTab = .live
+	}
+	
+	func checkDeepLink(url: URL) -> Bool {
+		guard let host = URLComponents(url: url, resolvingAgainstBaseURL: true)?.host else { return false }
+		if host == TabE.home.rawValue { currentTab = .home }
+		else if host == TabE.live.rawValue { currentTab = .live }
+		//else { return checkInternalLinks(host: host) }
+		return true
+	}
+//	func checkInternalLinks(host: String) -> Bool {
+//		
+//	}
+}
+enum TabE: String {
+	case home = "home"
+	case live = "live"
+	case settings = "settings"
+}
+
 struct TabBarMenuView: View {
 	
-	@State private var selection = 1
 	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	@StateObject var tabData: TabDataModel = TabDataModel()
 	//@StateObject var wallpapersFetcher = WallpapersFetcher()
 //	let home = UIImage(named: "home")!.withTintColor(.red, renderingMode: .alwaysOriginal)
 	
@@ -24,27 +48,32 @@ struct TabBarMenuView: View {
 		}
 	
     var body: some View {
-			TabView(selection: $selection) {
-				MainView()
+			TabView(selection: $tabData.currentTab) {
+				MainView(tabData: tabData)
+					.tag(TabE.home)
 					.tabItem {
 						tabItemLabel(imageName: "home", text: "Home")
-					}.tag(1)
+					}
 				
 				//LiveWithMenuView()
 				//LiveVideoView()
-				SecondScreenView(isOpens: false, gridFor: .liveCat)
+				SecondScreenView(tabSelection: $tabData.currentTab, isDisappear: false, isOpens: true, gridFor: .liveCat)
+					.tag(TabE.live)
 					.tabItem {
 						tabItemLabel(imageName: "brush", text: "Live")
-					}.tag(2)
-					
+					}
 				
 				SettingsView()
+					.tag(TabE.settings)
 					.tabItem {
 						tabItemLabel(imageName: "settings", text: "Settings")
-					}.tag(3)
+					}
 			} // TabView
 			.accentColor(.cGreen)
 			.background(.black)
+			.onOpenURL { url in
+				if tabData.checkDeepLink(url: url) { print("From deep link") } else { print("fall back dl") }
+			}
 			
     } // body
 	

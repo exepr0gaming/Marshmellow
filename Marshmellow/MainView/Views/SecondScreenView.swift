@@ -10,33 +10,38 @@ import SwiftUI
 struct SecondScreenView: View {
 	
 	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	@Binding var tabSelection: TabE
 	@State var isDisappear: Bool = true
 	@State var isOpens: Bool
 	@State var gridFor: GridE
 	
+
     var body: some View {
 			
-			ScrollView(.vertical, showsIndicators: false) {
+			//ScrollView(.vertical, showsIndicators: false) {
 				VStack {
 					
-					Color.cGray49.frame(height: 1)
-						.padding(.bottom, 11)
+					if isOpens && gridFor == .liveCat {
+						BackArrowAndNavTitleView(title: "Live Wallpapers", tabSelection: $tabSelection)
+							.padding(.top, isOpens ? 15 : 0)
+					}
 					
 					GridAndMenuView(isOpens: isOpens, gridFor: gridFor)
-					
-					AdsAndTextView()
-
-					BottomGridWithInstallView()
 				}
-			}
-			.frame(maxHeight: .infinity)
+				//.padding(.top, isOpens && gridFor == .staticCat ? 103 : 0)
+				
+				
+			//}
+			//.frame(maxHeight: .infinity)
 			.background(Color.black)
 			.navigationBarTitleDisplayMode(.inline)
-			.navigationTitle(gridFor == .staticCat
-											 ? wallpapersFetcher.detailCategory.nameCategory
-											 : wallpapersFetcher.detailLiveCat.nameCategory)
+			.navigationTitle(wallpapersFetcher.detailCategory.nameCategory)
+			.navigationBarHidden(isOpens && gridFor == .liveCat ? true : false)
+//			.navigationTitle(gridFor == .staticCat
+//											 ? wallpapersFetcher.detailCategory.nameCategory
+//											 : "Live Wallpapers")
 			//.navigationTitle(isDisappear ? wallpapersFetcher.detailCategory.nameCategory : "")
-			//.navigationBarHidden(true)
+			
 			//.navigationBarBackButtonHidden(true)
 			
 			

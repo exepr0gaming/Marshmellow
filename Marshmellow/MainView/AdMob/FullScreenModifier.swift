@@ -7,10 +7,25 @@
 
 import SwiftUI
 
+enum ConstsE {
+	
+	enum Metrica: String {
+		case yandexMetrica = "f1f983cd-4255-4a7c-a94e-cb2ac05a00d2"
+	}
+	
+	enum ADMobE: String {
+		case testRewardedId = "ca-app-pub-3940256099942544/1712485313"
+		case testInterstitialId = "ca-app-pub-3940256099942544/4411468910"
+		case testBannerId = "ca-app-pub-3940256099942544/2934735716"
+		case testNativeId = "ca-app-pub-3940256099942544/3986624511"
+	}
+}
+
+
 struct FullScreenModifier<Parent: View>: View {
 	@Binding var isPresented: Bool
  @State var adType: AdType
- 
+	
  //Select adType
  enum AdType {
 		 case interstitial
@@ -29,8 +44,8 @@ struct FullScreenModifier<Parent: View>: View {
 				 parent
 				 
 				 if isPresented {
-						 EmptyView()
-								 .edgesIgnoringSafeArea(.all)
+//						 EmptyView()
+//								 .edgesIgnoringSafeArea(.all)
 						 
 						 if adType == .rewarded {
 								 RewardedAdView(isPresented: $isPresented, adUnitId: adUnitId, rewardFunc: rewardFunc)

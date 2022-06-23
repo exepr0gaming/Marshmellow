@@ -13,17 +13,18 @@ struct GridAndMenuView: View {
 	@State var isOpens: Bool = false
 	@State var gridFor: GridE
 	
-    var body: some View {
+	var body: some View {
+		VStack {
 			switch gridFor {
 				case .staticCat:
 					StaticCatView(isOpens: isOpens)
 				case .liveCat:
 					LiveCatView()
 			}
-				
+		}
+		.frame(minHeight: 450)
 		
-			
-    }
+	}
 }
 
 // MARK: - work block

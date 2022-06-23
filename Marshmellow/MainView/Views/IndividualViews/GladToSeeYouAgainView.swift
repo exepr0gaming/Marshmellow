@@ -36,11 +36,14 @@ struct GladToSeeYouAgainView: View {
 					Spacer()
 				}.padding(.leading, leadPadding)
 				
-				VStack(spacing: 0) {
+				VStack(alignment: .trailing, spacing: 0) {
 					HStack(alignment: .top) {
+						Spacer()
+						
 							Text("Glad to see you again")
 								.nunitoFont(name: FontsE.nunitoBold.rawValue, size: 40)
 								//.padding(.trailing, -80)
+								.padding(.top, UIDevice.isIPhone ? 0 : 50)
 								.fixedSize(horizontal: false, vertical: true)
 								.lineLimit(2)
 								.multilineTextAlignment(.leading)
@@ -64,7 +67,7 @@ struct GladToSeeYouAgainView: View {
 				
 				Spacer()
 				
-				NativeAdViewRepresentable().frame(width: getScreenBounds().width, height: 300)
+				NativeAdViewRepresentable().frame(width: getScreenBounds().width, height: 282)
 				
 				Button {
 					withAnimation {

@@ -9,17 +9,28 @@ import SwiftUI
 
 struct WelcomeAfterPresentationView: View {
 	
-	//@Binding var isPresented: Bool
 	@ObservedObject var presentationVM: PresentationVM
+	
+	private func letsGoButton() {
+		withAnimation {
+			presentationVM.isPresented.toggle()
+			UserDefaults.standard.set(true, forKey: "shownThePresentation")
+		}
+	}
 
     var body: some View {
 				
 			ZStack(alignment: Alignment(horizontal: .leading, vertical: .top)) {
 
-				Image(systemName: "xmark")
-					.font(.system(size: 20))
-					.foregroundColor(.white)
-					.padding(EdgeInsets(top: 54, leading: 22, bottom: 0, trailing: 0))
+				Button {
+					letsGoButton()
+				} label: {
+					Image(systemName: "xmark")
+						.font(.system(size: 20))
+						.foregroundColor(.white)
+						.padding(EdgeInsets(top: 54, leading: 22, bottom: 0, trailing: 0))
+				}
+
 				
 				VStack {
 					LottieView(name: "welcome", loopMode: .loop)
@@ -32,10 +43,7 @@ struct WelcomeAfterPresentationView: View {
 							.frame(width: getScreenBounds().width, height: 282)
 						
 						Button {
-							withAnimation {
-								presentationVM.isPresented.toggle()
-								UserDefaults.standard.set(true, forKey: "shownThePresentation")
-							}
+							letsGoButton()
 						} label: {
 							ZStack {
 								LottieView(name: "button")

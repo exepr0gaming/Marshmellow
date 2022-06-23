@@ -61,7 +61,7 @@ struct CongratulationsView: View {
 				} else {
 					Spacer()
 					
-					NativeAdViewRepresentable().frame(width: getScreenBounds().width, height: 300)
+					NativeAdViewRepresentable().frame(width: getScreenBounds().width, height: 282)
 					
 					Button {
 						withAnimation {

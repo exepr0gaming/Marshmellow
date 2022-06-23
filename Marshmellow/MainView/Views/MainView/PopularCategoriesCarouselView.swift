@@ -11,6 +11,7 @@ struct PopularCategoriesCarouselView: View {
 
 		let titleView: String
 	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	@ObservedObject var tabData: TabDataModel
 		
 			var body: some View {
 					
@@ -25,7 +26,7 @@ struct PopularCategoriesCarouselView: View {
 						HStack(alignment: .top, spacing: 8) {
 							ForEach(self.wallpapersFetcher.wallpapers.popCats, id: \.self) { wallpaper in
 								NavigationLink {
-									SecondScreenView(isOpens: true, gridFor: .staticCat) // category: wallpaper,
+									SecondScreenView(tabSelection: $tabData.currentTab, isOpens: true, gridFor: .staticCat) // category: wallpaper,
 										.onAppear {
 												wallpapersFetcher.linkToFetchCategory = wallpaper.link
 											print("PopCats linkToFetchCategory= \(wallpapersFetcher.linkToFetchCategory)")
@@ -52,8 +53,8 @@ struct PopularCategoriesCarouselView: View {
 			}
 	}
 
-	struct PopularCategoriesCarouselView_Previews: PreviewProvider {
-			static var previews: some View {
-				PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue).environmentObject(WallpapersFetcher())
-			}
-	}
+//	struct PopularCategoriesCarouselView_Previews: PreviewProvider {
+//			static var previews: some View {
+//				PopularCategoriesCarouselView(titleView: WallpaperCategoriesE.popularCategoriesM.rawValue).environmentObject(WallpapersFetcher())
+//			}
+//	}
