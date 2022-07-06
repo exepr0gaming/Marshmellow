@@ -19,6 +19,13 @@ enum ConstsE {
 		case testBannerId = "ca-app-pub-3940256099942544/2934735716"
 		case testNativeId = "ca-app-pub-3940256099942544/3986624511"
 	}
+	
+	enum FetchUrlsE: String {
+		case apiURL = "http://159.223.194.4"
+		case allWalls = "/api/wallpapers/"
+		case staticW = "/api/wallpapers/static2/"
+		case live = "/api/wallpapers/live2/"
+	}
 }
 
 
@@ -48,8 +55,8 @@ struct FullScreenModifier<Parent: View>: View {
 //								 .edgesIgnoringSafeArea(.all)
 						 
 						 if adType == .rewarded {
-								 RewardedAdView(isPresented: $isPresented, adUnitId: adUnitId, rewardFunc: rewardFunc)
-										 .edgesIgnoringSafeArea(.all)
+//								 RewardedAdView(isPresented: $isPresented, adUnitId: adUnitId, rewardFunc: rewardFunc)
+//										 .edgesIgnoringSafeArea(.all)
 						 } else if adType == .interstitial {
 								 InterstitialAdView(isPresented: $isPresented, adUnitId: adUnitId)
 						 }
@@ -58,7 +65,7 @@ struct FullScreenModifier<Parent: View>: View {
 		 .onAppear {
 				 //Initialize the ads as soon as the view appears
 				 if adType == .rewarded {
-						 RewardedAd.shared.loadAd(withAdUnitId: adUnitId)
+						 //RewardedAd.shared.loadAd(withAdUnitId: adUnitId)
 				 } else if adType == .interstitial {
 						 InterstitialAd.shared.loadAd(withAdUnitId: adUnitId)
 				 }

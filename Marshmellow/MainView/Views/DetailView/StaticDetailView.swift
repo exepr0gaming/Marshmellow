@@ -20,7 +20,6 @@ struct StaticDetailView: View {
 			if imageLoader.image != nil {
 				Image(uiImage: imageLoader.image!)
 					.resizable()
-					.scaledToFill()
 					.ignoresSafeArea()
 				
 			} else if imageLoader.errorMessage != nil {

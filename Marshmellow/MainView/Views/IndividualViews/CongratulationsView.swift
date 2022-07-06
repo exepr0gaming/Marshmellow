@@ -43,10 +43,9 @@ struct CongratulationsView: View {
 				Spacer()
 				
 				if withLottie {
-					Spacer()
 					
 					LottieView(name: "congratulations", loopMode: .loop)
-						.frame(height: 350) // height: 337
+						.frame(maxHeight: 337) // height: 337
 						//.padding(.top, 21)
 					
 					Button {
@@ -59,7 +58,6 @@ struct CongratulationsView: View {
 					.padding(.horizontal)
 					
 				} else {
-					Spacer()
 					
 					NativeAdViewRepresentable().frame(width: getScreenBounds().width, height: 282)
 					
@@ -72,11 +70,12 @@ struct CongratulationsView: View {
 						YellowButtonLabelView(buttonText: "Install")
 					}
 					.padding(.horizontal)
+					.padding(.bottom)
 				}
-
+					
 			}
-			.mainFrameInfinity()
-			//.frame(height: getScreenBounds().height)
+//			.frame(height: getScreenBounds().height)
+//			.frame(maxHeight: getScreenBounds().height)
 			.padding(.vertical, 25)
 			.background(Color.black)
 			

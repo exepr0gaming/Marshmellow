@@ -13,16 +13,16 @@ struct MainView: View {
 	@ObservedObject var tabData: TabDataModel
 	
 	
-    var body: some View {
-			NavigationView {
-				
+	var body: some View {
+		//NavigationView {
+		CustomNavView {
 			ScrollView(.vertical, showsIndicators: false) {
 				
 				VStack {
 					
 					NavigationBarView()//.frame(height: 100)
 					
-						// MARK: - Triple Carousels
+					// MARK: - Triple Carousels
 					VStack {
 						NewCategoriesCarouselView(titleView: WallpaperCategoriesE.newCategories.rawValue, tabData: tabData)
 							.padding(.bottom, 22)
@@ -31,7 +31,7 @@ struct MainView: View {
 							.padding(.bottom, 17)
 						
 						LiveCatCarouselView(tabData: tabData, titleView: WallpaperCategoriesE.liveCategoriesM.rawValue)
-							//.padding(.bottom, 18)
+						//.padding(.bottom, 18)
 					}
 					.padding(.horizontal, 11)
 					
@@ -40,41 +40,40 @@ struct MainView: View {
 						.frame(height: getScreenBounds().height)
 					
 					// MARK: Advertising + Text
-						//AdsAndTextView()
+					//AdsAndTextView()
 					
 					// MARK: Bottom Grid + Install
-						//BottomGridWithInstallView()
+					//BottomGridWithInstallView()
 				} // VStack
 				//.frame(maxWidth: .infinity)
 				
 			}
-			//.frame(maxWidth: .infinity)
 			//.mainFrameInfinity()
 			.background(Color.black)
 			.edgesIgnoringSafeArea(.bottom)
-				
+			
 			.navigationTitle("")
 			.navigationBarHidden(true)
-			.navigationBarBackButtonHidden(true)
+			//.navigationBarBackButtonHidden(true)
 			.accentColor(.white)
-				
+			
 			.onAppear {
 				UINavigationBar.appearance().tintColor = .white
 				NotificationManager.shared.setAllNotificationsWithRequestAuthorization()
+				
+				wallpapersFetcher.offsetX = 0
+				wallpapersFetcher.selectedLiveIndex = 0
+				print("%%%MainScreen onAppear LiveIndex= \(wallpapersFetcher.selectedLiveIndex), offsetX= \(wallpapersFetcher.offsetX)")
 			}
 			
-				///
-//			.toolbar {
-//				ToolbarItem(placement: .navigationBarLeading) {
-//					NavigationBarView()
-//				}
+//			.onDisappear {
+//				print("%%%MainScreen onDisappear LiveIndex= \(wallpapersFetcher.selectedLiveIndex), offsetX= \(wallpapersFetcher.offsetX)")
 //			}
-			}
-			.navigationViewStyle(StackNavigationViewStyle())
-
 			
-			
-    }
+			.navBarItems(title: "Custom Title!", backButHidden: true, isMain: true)
+		}
+		.navigationViewStyle(StackNavigationViewStyle())
+	}
 }
 
 //struct MainView_Previews: PreviewProvider {

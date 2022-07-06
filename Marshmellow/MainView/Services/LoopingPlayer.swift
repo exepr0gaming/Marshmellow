@@ -32,7 +32,7 @@ class QueuePlayerUIView: UIView {
 		
 		// Load Video
 		let fileUrl = (!isLocale
-									 ? URL(string: FetchUrlsE.apiURL.rawValue + url)
+									 ? URL(string: ConstsE.FetchUrlsE.apiURL.rawValue + url)
 									 : Bundle.main.url(forResource: url, withExtension: "mp4"))!
 		
 		let playerItem = AVPlayerItem(url: fileUrl)

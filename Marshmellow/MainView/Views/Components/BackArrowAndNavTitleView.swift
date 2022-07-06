@@ -12,14 +12,23 @@ struct BackArrowAndNavTitleView: View {
 	var title: String
 	var size: Double = 20
 	//@ObservedObject var tabData: TabDataModel
+	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
 	@Binding var tabSelection: TabE
+	@Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+//	var btnBut: some View { Button { self.presentationMode.wrappedValue.dismiss()
+//		} label: {Text("go back bro")}}
 	
     var body: some View {
 			VStack(spacing: 7) {
 				HStack(alignment: .center) {
 					Button {
-					//	tabData.currentTab = .home
-						tabSelection = .home
+						if wallpapersFetcher.isOpenDetail {
+							self.presentationMode.wrappedValue.dismiss()
+						} else {
+							tabSelection = .live
+						}
+					
+						print("wtf dude press self.presentationMode.wrappedValue.dismiss()")
 					} label: {
 						Image(systemName: "arrow.left")
 							.font(.system(size: 20))
@@ -36,7 +45,7 @@ struct BackArrowAndNavTitleView: View {
 				}
 				.padding(.horizontal, 21)
 				
-				Color.cGray49.frame(height: 1)
+				Color.cGray49.frame(height: wallpapersFetcher.isOpenDetail ? 0 : 1)
 			}
 			.frame(height: 44).zIndex(5)
     }

@@ -20,7 +20,7 @@ struct AsyncImageView: View {
 	var body: some View {
 		let imageUrl = imageStr.replacingOccurrences(of: " ", with: "%20")
 		// CacheAsyncImage
-		AsyncImage(url: URL(string: FetchUrlsE.apiURL.rawValue + imageUrl) ?? URL(fileURLWithPath: "ConnectingDataBaseLogo")) { phase in
+		AsyncImage(url: URL(string: ConstsE.FetchUrlsE.apiURL.rawValue + imageUrl) ?? URL(fileURLWithPath: "ConnectingDataBaseLogo")) { phase in
 			
 			switch phase {
 				case .empty:
@@ -28,7 +28,6 @@ struct AsyncImageView: View {
 					LottieView(name: "progressView").background(Color.black)
 					
 				case .success(let image):
-				
 					image
 						.resizable()
 						.aspectRatio(contentMode: contentMode)
@@ -38,8 +37,8 @@ struct AsyncImageView: View {
 					
 				case .failure(_): // let error
 					// try to load, if cancelled
-										//CacheAsyncImage(url: URL(string: FetchUrlsE.apiURL.rawValue + imageStr) ?? URL(fileURLWithPath: "ConnectingDataBaseLogo")) { phase in
-					AsyncImage(url: URL(string: FetchUrlsE.apiURL.rawValue + imageStr) ?? URL(fileURLWithPath: "ConnectingDataBaseLogo")) { phase in
+										//CacheAsyncImage(url: URL(string: ConstsE.FetchUrlsE.apiURL.rawValue + imageStr) ?? URL(fileURLWithPath: "ConnectingDataBaseLogo")) { phase in
+					AsyncImage(url: URL(string: ConstsE.FetchUrlsE.apiURL.rawValue + imageStr) ?? URL(fileURLWithPath: "ConnectingDataBaseLogo")) { phase in
 											if let image = phase.image {
 												image
 													.resizable()

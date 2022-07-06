@@ -27,7 +27,7 @@ struct PagerTabView<Content: View, Label: View>: View {
 	@State var labelScrollWidth: CGFloat = 0
 	@State var labelminY: CGFloat = 0
 	
-	@State private var positionOfScroll: CGFloat = 0
+	//@State private var positionOfScroll: CGFloat = 0
 	
 	// Offset for Sticky segmented Picker
 	//@State var topHeaderOffset: CGFloat = 0
@@ -77,9 +77,19 @@ struct PagerTabView<Content: View, Label: View>: View {
 					ScrollView(.horizontal, showsIndicators: false) {
 							HStack {
 								label.offset(x: -tabOffset)
+									.padding(.top, minY > 20 ? 0 : 20)
+									.offset(y: minY < 0 ? -minY : 0) // be for hStack
 							}
-							.padding(.top, minY > 20 ? 0 : 20)
-								.offset(y: minY < 0 ? -minY : 0)
+//								.overlay(
+//									HStack(spacing: 0) {
+//										ForEach(0..<Int(maxTabs), id: \.self) { index in
+//											Rectangle()
+//												.fill(Color.yellow.opacity(0.3))
+//												.onTapGesture {
+//													let newOffset = CGFloat(index) * getScreenBounds().width
+//													self.offsetX = newOffset
+//													print("%%%offsetX = \(offsetX)")
+//												}}})
 
 							.background(GeometryReader { proxy in Color.clear.onAppear {
 								labelScrollWidth = proxy.size.width
@@ -115,7 +125,7 @@ struct PagerTabView<Content: View, Label: View>: View {
 				// When value changes
 				.onPreferenceChange(TabPreferenceKey.self) { proxy in
 					let minX = -proxy.minX
-					let maxWidth = proxy.width //proxy.width
+					let maxWidth = proxy.width
 					let screenWidth = getScreenBounds().width
 					let maxTabs = (maxWidth / screenWidth).rounded()
 					self.maxTabs = maxTabs
@@ -125,9 +135,9 @@ struct PagerTabView<Content: View, Label: View>: View {
 					
 					if maxTabs - progress > 3 {
 						self.tabOffset = progress * ( labelScrollWidth / maxTabs)
-						self.positionOfScroll = progress * ( labelScrollWidth / maxTabs)
 					}
-					print("@@@minX=\(-proxy.minX), progress=\(progress), tabOffset=\(tabOffset), maxTabs=\(maxTabs), positionOfScroll=\(positionOfScroll)")
+					//self.offsetX = (CGFloat(selection) * screenWidth).rounded()
+					print("&&&WTF dude!!!, offsetX=\(offsetX), proxy.minX=\(-proxy.minX), progress=\(progress), tabOffset=\(tabOffset), maxTabs=\(maxTabs), ") // TabPreferenceKeyValue= \(TabPreferenceKey.Value.self), TabPreferenceKey= \(TabPreferenceKey.self)
 				}
 				
 			}

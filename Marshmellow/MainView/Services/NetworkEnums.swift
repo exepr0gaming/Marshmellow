@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum FetchUrlsE: String {
-	case apiURL = "http://159.223.194.4"
-	case allWalls = "/api/wallpapers/"
-	case staticW = "/api/wallpapers/static2/"
-	case live = "/api/wallpapers/live2/"
-}
-
 enum APIErrorE: Error, CustomStringConvertible {
 	case badURL
 	case badResponse(statusCode: Int)

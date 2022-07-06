@@ -14,23 +14,29 @@ struct DetailWallpaperView: View {
 	
 	@State private var isPreview: Bool = false
 	@StateObject var detailVM = DetailWallpaperVM() // ???
-	//@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
+	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
 	@StateObject var imageLoader: ImageLoader
-	@State private var isCongratulations: Bool = false
+	//@State private var isCongratulations: Bool = false
 	@State private var uiTabBarController: UITabBarController?
 	@State var detailFor: GridE
 	@State var wallpaperURL: String
 	
-	init(detailFor: GridE, wallpaperURL: String?, isInitialPresented: Binding<Bool>) {
+	@Binding var isCongratulations: Bool
+	
+	
+	init(detailFor: GridE, wallpaperURL: String?, isInitialPresented: Binding<Bool>, isCongratulations: Binding<Bool>) {
 		self.detailFor = detailFor
 		self._imageLoader = StateObject(wrappedValue: ImageLoader(url: wallpaperURL))
 		self.wallpaperURL = wallpaperURL!
 		self._isInitialPresented = isInitialPresented
+		self._isCongratulations = isCongratulations
 	}
 	
 	var body: some View {
 		
-		ZStack {
+		ZStack(alignment: .top) {
+			//BackArrowAndNavTitleView(title: "2", tabSelection: $wallpapersFetcher.tabE).offset(y: 50)
+			
 			VStack {
 				switch detailFor {
 					case .staticCat:
@@ -40,128 +46,38 @@ struct DetailWallpaperView: View {
 							.edgesIgnoringSafeArea(.all)
 						//LiveDetailView(videoUrl: wallpaperURL)
 				}
-			}.frame(height: getScreenBounds().height)
+			}
 				
 				// MARK: - isPreview
+			VStack {
 				if isPreview {
-					VStack {
-						VStack(spacing: 4) {
-							Image(systemName: "lock.fill")
-								.font(.system(size: 50))
-							
-							Text(.now, style: .time)
-								.font(.system(size: 83, weight: .light))
-							
-							//						Text(detailVM.getCurrentTime())
-							//							.font(.system(size: 83, weight: .light))
-							Text(.now, style: .date)
-								.font(.system(size: 22, weight: .semibold))
-						}
-						.foregroundColor(.white)
-						.padding(.top, 59)
-						
-						Spacer()
-						
-						HStack(alignment: .bottom, spacing: 26) {
-							
-							bottomIcons(image: "flashlight.off.fill")
-							
-							Button {
-								withAnimation {
-									isPreview.toggle()
-								}
-							} label: {
-								Text("swipe up to open")
-									.font(.system(size: 17))
-									.foregroundColor(.white.opacity(0.64))
-									.gesture(
-										DragGesture().onEnded { value in
-												if value.translation.height < 10  { // 10
-													withAnimation {
-														isPreview.toggle()
-													}
-												}})
-							}
-							
-							bottomIcons(image: "camera.fill")
-						}
-						
-						.navigationBarHidden(true)
-						//.navigationBarBackButtonHidden(true)
-						
-					}
-					.padding(.bottom, 67) // 47
-					
-					// MARK: - Default State (!isPreview)
+					previewView
 				} else {
-					
-					VStack(spacing: 34) {
-						
-						Spacer()
-						
-						HStack(spacing: 61) {
-							Button {
-								isPreview.toggle()
-							} label: {
-								shareButtonLabel(image: "smartphone")
-							}
-							
-							Button {
-								switch detailFor {
-									case .staticCat:
-										if imageLoader.image != nil {
-											detailVM.shareWallpaper(image: imageLoader.image!) // Image(uiImage: imageLoader.image!)
-										}
-									case .liveCat:
-										imageLoader.downloadFile()
-								}
-							} label: {
-								shareButtonLabel(image: "share")
-							}
-						} // HStack
-						
-						Button {
-							switch detailFor {
-								case .staticCat:
-									imageLoader.saveImage()
-								case .liveCat:
-									//
-									imageLoader.downloadFile()
-							}
-							withAnimation {
-								self.isCongratulations = true
-							}
-						} label: {
-							YellowButtonLabelView(buttonText: "Save")
-						}
-					} // VStack with Buttons
-					.padding(.horizontal, 16)
-					.padding(.bottom, 88) // 68
-					
-					.navigationTitle("")
-					//.navigationBarBackButtonHidden(true)
+					saveAndShareView
 				}
+		}//.frame(height: getScreenBounds().height)
 				
 				if isCongratulations {
 					CongratulationsView()
-						.navigationBarBackButtonHidden(true)
-						.navigationBarHidden(true)
-						.frame(maxHeight: getScreenBounds().height)
+						//.frame(maxHeight: getScreenBounds().height)
 				}
 				
 			} // ZStack
-		
+		.navigationBarHidden(true)
+		.navigationBarBackButtonHidden(true)
 		
 		.introspectTabBarController { (UITabBarController) in
 			UITabBarController.tabBar.isHidden = true
 			uiTabBarController = UITabBarController
 		}
 //		.onAppear(perform: {
-//			isInitialPresented = false
+//			wallpapersFetcher.isOpenDetail = true
 //		})
 		.onDisappear{
 			uiTabBarController?.tabBar.isHidden = false
-			isInitialPresented = true
+			isCongratulations = false
+			//offsetX = 0
+			//wallpapersFetcher.selectedLiveIndex = 0
 		}
 		
 		
@@ -198,10 +114,100 @@ struct DetailWallpaperView: View {
 	
 }
 
+// MARK: - extension DetailWallpaperView
+extension DetailWallpaperView {
+	
+	private var saveAndShareView: some View {
+		VStack(spacing: 34) {
+			Spacer()
+			
+			HStack(spacing: 61) {
+				Button {
+					isPreview.toggle()
+				} label: {
+					shareButtonLabel(image: "smartphone")
+				}
+				
+				Button {
+					switch detailFor {
+						case .staticCat:
+							if imageLoader.image != nil {
+								imageLoader.shareVideoWallpaper()
+								//imageLoader.shareWallpaper(image: imageLoader.image!) // Image(uiImage: imageLoader.image!)
+							}
+						case .liveCat:
+							//imageLoader.shareWallpaper(image: imageLoader.image!) // Image(uiImage: imageLoader.image!)
+							imageLoader.shareVideoWallpaper()
+					}
+				} label: {
+					shareButtonLabel(image: "share")
+				}
+			} // HStack
+			
+			Button {
+				switch detailFor {
+					case .staticCat:
+						print("Detail try save Photo!")
+						imageLoader.saveImage()
+					case .liveCat:
+						print("Detail try save Video!")
+						imageLoader.saveVideo()
+				}
+				withAnimation {
+					self.isCongratulations = true
+				}
+			} label: {
+				YellowButtonLabelView(buttonText: "Save")
+			}
+		} // VStack with Buttons
+		.padding(.horizontal, 16)
+		.padding(.bottom, 68) // 88
+	}
+	
+	// wallpaper preview screen
+	private var previewView: some View {
+		VStack {
+			VStack(spacing: 4) {
+				Image(systemName: "lock.fill")
+					.font(.system(size: 50))
+				
+				Text(.now, style: .time)
+					.font(.system(size: 83, weight: .light))
+				//						Text(detailVM.getCurrentTime())
+				//							.font(.system(size: 83, weight: .light))
+				Text(.now, style: .date)
+					.font(.system(size: 22, weight: .semibold))
+			}
+			.foregroundColor(.white)
+			.padding(.top, 80)
+			
+			Spacer()
+			
+			HStack(alignment: .bottom, spacing: 26) {
+				
+				bottomIcons(image: "flashlight.off.fill")
+				
+				Button {
+					withAnimation {
+						isPreview.toggle()
+					}
+				} label: {
+					Text("swipe up to open")
+						.font(.system(size: 17))
+						.foregroundColor(.white.opacity(0.64))
+						.gesture(
+							DragGesture().onEnded { value in
+									if value.translation.height < 10  { // 10
+										withAnimation {
+											isPreview.toggle()
+										}
+									}})
+				}
+				
+				bottomIcons(image: "camera.fill")
+			}
+		}
+		.padding(.bottom, 47)
+	}
+}
 
-
-//struct DetailWallpaperView_Previews: PreviewProvider {
-//	static var previews: some View {
-//		DetailWallpaperView(wallpaperURL: "http://167.99.51.18/media/wallpapers/live/sky/4434209.mp4").environmentObject(WallpapersFetcher())
-//	}
-//}

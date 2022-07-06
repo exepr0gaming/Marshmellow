@@ -25,6 +25,7 @@ class WallpapersFetcher: ObservableObject {
 		}
 	}
 	
+	@Published var offsetX: CGFloat = 0
 	
 	@Published private(set) var liveWalls: [CategoryModel] = []
 	@Published var detailLiveCat: DetailCategoryModel = DetailCategoryModel(id: 1, nameCategory: "", array: [WallpaperCategoryUrlsModel(url: "", previewUrl: "")])
@@ -39,7 +40,8 @@ class WallpapersFetcher: ObservableObject {
 		}
 	}
 	
-	
+	@Published var isOpenDetail: Bool = false
+	@Published var tabE: TabE = .home
 
 	
 	@Published var errMessage: String? = nil
@@ -53,7 +55,7 @@ class WallpapersFetcher: ObservableObject {
 			await fetchWallpaperCategory(detailCategoryUrl: nil, selectedIndexOfCat: selectedLiveIndex, staticOrLive: .liveCat)
 		}
 		//fetchWallpaperCategory(linkCategory: "/api/wallpapers/static2/5")
-		//fetchLiveCategory(linkCategory: FetchUrlsE.live.rawValue + "\(currentSelectionCat + 1)") // /api/wallpapers/live/1
+		//fetchLiveCategory(linkCategory: ConstsE.FetchUrlsE.live.rawValue + "\(currentSelectionCat + 1)") // /api/wallpapers/live/1
 	}
 	
 	func fetchAllWallpapers() async {
@@ -65,7 +67,7 @@ class WallpapersFetcher: ObservableObject {
 		let service = NetworkService()
 		print("WTF DUDE= fetchAllWallpapers started")
 		
-		await service.fetchWallpapers(fetchUrl: FetchUrlsE.allWalls.rawValue) { [unowned self] result in
+		await service.fetchWallpapers(fetchUrl: ConstsE.FetchUrlsE.allWalls.rawValue) { [unowned self] result in
 //			isLoading = true
 //			errMessage = nil
 			DispatchQueue.main.async {
@@ -86,7 +88,7 @@ class WallpapersFetcher: ObservableObject {
 		
 		let service = NetworkService()
 		
-		await service.fetch([CategoryModel].self, fetchUrl: FetchUrlsE.live.rawValue) { [unowned self] result in
+		await service.fetch([CategoryModel].self, fetchUrl: ConstsE.FetchUrlsE.live.rawValue) { [unowned self] result in
 //			isLoading = true
 //			errMessage = nil
 			DispatchQueue.main.async {
@@ -99,7 +101,7 @@ class WallpapersFetcher: ObservableObject {
 						print("@@@ErrorfetchLiveWallpapers with err= \(err.localizedDescription)")
 				}
 			}
-		} //(fetchUrl: FetchUrlsE.live.rawValue) { [unowned self] result in
+		} //(fetchUrl: ConstsE.FetchUrlsE.live.rawValue) { [unowned self] result in
 	}
 	
 	func fetchWallpaperCategory(detailCategoryUrl: String?, selectedIndexOfCat: Int?, staticOrLive: GridE ) async {
@@ -108,8 +110,8 @@ class WallpapersFetcher: ObservableObject {
 		let service = NetworkService()
 		var catUrl: String = ""
 		switch staticOrLive {
-			case .staticCat: catUrl = FetchUrlsE.staticW.rawValue
-			case .liveCat: catUrl = FetchUrlsE.live.rawValue
+			case .staticCat: catUrl = ConstsE.FetchUrlsE.staticW.rawValue
+			case .liveCat: catUrl = ConstsE.FetchUrlsE.live.rawValue
 		}
 		guard
 			let url = detailCategoryUrl != nil
@@ -126,19 +128,19 @@ class WallpapersFetcher: ObservableObject {
 							case .staticCat:
 								if detailCategoryUrl != nil {
 									self.detailCategory = getCategory
-									print("%%%fetch detailCategory!!! StaticDetail= \(self.detailCategory.array[0].url)")
+									//print("%%%fetch detailCategory!!! StaticDetail= \(self.detailCategory.array[0].url)")
 								} else {
 									self.gridCategory = getCategory
-									print("%%%fetch gridCategory!!! StaticGrid= \(self.gridCategory.array[0].url)")
+									//print("%%%fetch gridCategory!!! StaticGrid= \(self.gridCategory.array[0].url)")
 								}
 								
 							case .liveCat:
 								if detailCategoryUrl != nil {
 									self.detailLiveCat = getCategory
-									print("%%%fetch detailLiveCat!!! LiveDetail= \(self.detailLiveCat.nameCategory)")
+									//print("%%%fetch detailLiveCat!!! LiveDetail= \(self.detailLiveCat.nameCategory)")
 								} else {
 									self.gridLiveCat = getCategory
-									print("%%%fetch gridLiveCat!!! LiveGrid= \(self.gridLiveCat.nameCategory)")
+									//print("%%%fetch gridLiveCat!!! LiveGrid= \(self.gridLiveCat.nameCategory)")
 								}
 						}
 						
@@ -158,7 +160,7 @@ class WallpapersFetcher: ObservableObject {
 ////		isLoading = true
 ////		errMessage = nil
 //		let service = NetworkService()
-//		let url = FetchUrlsE.live.rawValue + "\(currentSelectionCat + 1)"
+//		let url = ConstsE.FetchUrlsE.live.rawValue + "\(currentSelectionCat + 1)"
 //		print("@@@fetchCategory@@@")
 //		
 //		await service.fetch([WallpaperCategoryUrlsModel].self, fetchUrl: url) { result in

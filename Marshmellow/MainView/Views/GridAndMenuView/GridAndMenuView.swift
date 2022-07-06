@@ -13,16 +13,40 @@ struct GridAndMenuView: View {
 	@State var isOpens: Bool = false
 	@State var gridFor: GridE
 	
+	//@State var offsetX: CGFloat = 0
+	
 	var body: some View {
+		
 		VStack {
 			switch gridFor {
 				case .staticCat:
-					StaticCatView(isOpens: isOpens)
+					if !isOpens {
+						CatView(gridFor: .staticCat, catModel: wallpapersFetcher.wallpapers.catStatic, selection: $wallpapersFetcher.selectedStaticIndex) // , offsetX: $wallpapersFetcher.offsetX
+							.onAppear { print("&&&WTF dude, CatView staticCat open") }
+						// MARK: - Else - isOpens 1 grid withOutMenu
+					} else {
+						GridView(isDetail: true, gridFor: .staticCat)//, offsetX: $wallpapersFetcher.offsetX)
+							.gridViewSettings()
+						//	.onAppear { print("&&&WTF dude, GridView staticCat open") }
+						//.frame(width: getScreenBounds().width, alignment: .center)//.gridViewSettings()
+					}
+					
 				case .liveCat:
-					LiveCatView()
+					CatView(gridFor: .liveCat, catModel: wallpapersFetcher.liveWalls, selection: $wallpapersFetcher.selectedLiveIndex) // , offsetX: $wallpapersFetcher.offsetX
+					
+//						.onAppear{
+//								if gridFor == .liveCat {
+//									offsetX = 0
+//									wallpapersFetcher.selectedLiveIndex = 0
+//									print("%%% SecondScreen LiveIndex= \(wallpapersFetcher.selectedLiveIndex), offsetX= \(offsetX), GridView onAppear")}
+//						}
+//						.onDisappear {
+//							self.offsetX = 0
+//							wallpapersFetcher.selectedLiveIndex = 0
+//						}
+					
 			}
 		}
-		.frame(minHeight: 450)
 		
 	}
 }

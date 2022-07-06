@@ -19,7 +19,7 @@ struct LiveDetailView: View {
 //				.edgesIgnoringSafeArea(.all)
 //				.onAppear {
 //					if videoUrl.url.first != nil {
-//						player = AVPlayer(url: (URL(string: FetchUrlsE.apiURL.rawValue + videoUrl.url)!))
+//						player = AVPlayer(url: (URL(string: ConstsE.FetchUrlsE.apiURL.rawValue + videoUrl.url)!))
 //						player.play()
 //					}
 //				}

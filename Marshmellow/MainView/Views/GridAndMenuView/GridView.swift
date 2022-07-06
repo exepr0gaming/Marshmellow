@@ -14,48 +14,16 @@ enum GridE {
 
 struct GridView: View {
 	
+	//@State private var onAppearLiveCat: Bool = true
 	@State var isDetail: Bool
 	@State var gridFor: GridE
+	@State var isCongratulations: Bool = false
 	@EnvironmentObject var wallpapersFetcher: WallpapersFetcher
 	//@StateObject var adMobService = AdMobService()
 	@State var isInitialPresented: Bool = false
+	//@Binding var offsetX: CGFloat
 	
 	let flexibleLayout: [GridItem] = [.init(.flexible(minimum: 174, maximum: 400), spacing: 5), .init(.flexible(minimum: 174, maximum: 400), spacing: 5)]
-	//let detailCategory = isStaticGrid ? wallpapersFetcher.detailCategory.array : wallpapersFetcher.gridCategory.array
-	
-
-	func getSequenceOfCat(_ block: Int, isDetail: Bool) -> ArraySlice<WallpaperCategoryUrlsModel>  {
-		let seq = (block * 4) ..< ((block + 1) * 4)
-		switch gridFor {
-			case .staticCat:
-				print("%%%return getSequenceOfCat staticCat")
-				if isDetail {
-					return wallpapersFetcher.detailCategory.array[seq]
-				} else {
-					return wallpapersFetcher.gridCategory.array[seq]
-				}
-			case .liveCat:
-				print("%%%return getSequenceOfCat liveCat")
-				if isDetail {
-					return wallpapersFetcher.detailLiveCat.array[seq]
-				} else {
-					return wallpapersFetcher.gridLiveCat.array[seq]
-				}
-		}
-	}
-	
-	func returnGridCount(grid: GridE) -> Int {
-		switch grid {
-			case .staticCat:
-				 return !isDetail
-					? wallpapersFetcher.gridCategory.array.count / 4
-					: wallpapersFetcher.detailCategory.array.count / 4
-			case .liveCat:
-				 return !isDetail
-					? wallpapersFetcher.gridLiveCat.array.count / 4
-					: wallpapersFetcher.detailLiveCat.array.count / 4
-		}
-	}
 	
 	var body: some View {
 		let sequenceOfBlocks = 0..<20 //wallpapersFetcher.catBlocksCount
@@ -70,12 +38,15 @@ struct GridView: View {
 				ForEach(sequenceOfBlocks) { block in // gridCategory.array.count / 4
 					if block < detailOrGridCount {
 						LazyVGrid(columns: flexibleLayout, spacing: 5) {
-		//					ForEach(gridCategory.array[(block * 4) ..< ((block + 1) * 4)], id: \.self) { item in
 							ForEach(getSequenceOfCat(block, isDetail: isDetail), id: \.self) { item in
-								NavigationLink {
+								//NavigationLink {
+								CustomNavLink {
 									DetailWallpaperView(detailFor: gridFor,
 																			wallpaperURL: gridFor == .staticCat ? item.previewUrl : item.url,
-																			isInitialPresented: $isInitialPresented)
+																			isInitialPresented: $isInitialPresented,
+																			isCongratulations: $isCongratulations)
+										.navBarItems(backButHidden: isCongratulations ? true : false,
+																 isDetail: true)
 								} label: {
 									switch gridFor {
 										case .staticCat:
@@ -83,9 +54,10 @@ struct GridView: View {
 												.frame(height: UIDevice.isIPhone ? 310 : 488)
 												.cornerRadius(6)
 										case .liveCat:
-											LoopingPlayer(url: item.url, isLocale: false)
-												.frame(height: UIDevice.isIPhone ? 310 : 488)
-												.cornerRadius(6)
+											VideoCard(videoUrl: item.previewUrl)
+											//											LoopingPlayer(url: item.url, isLocale: false)
+											//												.frame(height: UIDevice.isIPhone ? 310 : 488)
+											//												.cornerRadius(6)
 									}
 								}
 								
@@ -99,17 +71,70 @@ struct GridView: View {
 				}
 				
 			}
-			.offset(x: getScreenBounds().width * CGFloat(gridFor == .staticCat
-																									 ? wallpapersFetcher.selectedStaticIndex
-																									 : wallpapersFetcher.selectedLiveIndex))
 			.frame(width: getScreenBounds().width)
 			//.frame(maxHeight: .infinity)
 			.background(Color.black)
+			
+			.offset(x: getOffsetForX())//onAppear: onAppearLiveCat))
+			//.offset(x: offsetX)
+			
+//			.onAppear {
+//				if gridFor == .liveCat {
+//					offsetX = 0
+//					wallpapersFetcher.selectedLiveIndex = 0
+//					print("%%%LiveIndex= \(wallpapersFetcher.selectedLiveIndex), offsetX= \(offsetX), GridView onAppear")}
+//			}
+			
+			
 		}
 		
 		//.presentInterstitialAd(isPresented: $adMobService.showIntersitialAd, adUnitId: ConstsE.ADMobE.testInterstitialId.rawValue)
 		
 		
+	}
+	
+	func getOffsetForX() -> CGFloat { // onAppear: Bool
+		if isDetail || (gridFor == .liveCat && wallpapersFetcher.selectedLiveIndex == 0) {//}|| onAppearLiveCat  {
+			return 0
+		}
+		let index: CGFloat = CGFloat(gridFor == .staticCat
+																 ? wallpapersFetcher.selectedStaticIndex
+																 : wallpapersFetcher.selectedLiveIndex)
+		print("&&&WTF dude, getScreenBounds().width * index= \(getScreenBounds().width * index)")
+		return getScreenBounds().width * index
+	}
+	
+	func getSequenceOfCat(_ block: Int, isDetail: Bool) -> ArraySlice<WallpaperCategoryUrlsModel>  {
+		let seq = (block * 4) ..< ((block + 1) * 4)
+		switch gridFor {
+			case .staticCat:
+				if isDetail {
+					return wallpapersFetcher.detailCategory.array[seq]
+				} else {
+					return wallpapersFetcher.gridCategory.array[seq]
+				}
+			case .liveCat:
+				if isDetail {
+					return wallpapersFetcher.detailLiveCat.array[seq]
+				} else {
+					return wallpapersFetcher.gridLiveCat.array[seq]
+				}
+		}
+	}
+	
+	func returnGridCount(grid: GridE) -> Int {
+		switch grid {
+			case .staticCat:
+				print("^^^staticCat isDetail=\(isDetail), gridFor=\(gridFor)")
+				return !isDetail
+				? wallpapersFetcher.gridCategory.array.count / 4
+				: wallpapersFetcher.detailCategory.array.count / 4
+			case .liveCat:
+				print("^^^liveCat isDetail=\(isDetail), gridFor=\(gridFor)")
+				return !isDetail
+				? wallpapersFetcher.gridLiveCat.array.count / 4
+				: wallpapersFetcher.detailLiveCat.array.count / 4
+		}
 	}
 	
 	

@@ -25,8 +25,9 @@ struct PopularCategoriesCarouselView: View {
 					ScrollView(.horizontal, showsIndicators: false) {
 						HStack(alignment: .top, spacing: 8) {
 							ForEach(self.wallpapersFetcher.wallpapers.popCats, id: \.self) { wallpaper in
-								NavigationLink {
-									SecondScreenView(tabSelection: $tabData.currentTab, isOpens: true, gridFor: .staticCat) // category: wallpaper,
+								CustomNavLink {
+									SecondScreenView(tabSelection: $tabData.currentTab, isOpens: true, gridFor: .staticCat)
+										.navBarTitle(wallpaper.nameCategory)
 										.onAppear {
 												wallpapersFetcher.linkToFetchCategory = wallpaper.link
 											print("PopCats linkToFetchCategory= \(wallpapersFetcher.linkToFetchCategory)")

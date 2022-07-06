@@ -24,21 +24,25 @@ class DetailWallpaperVM: ObservableObject {
 		return result
 	}
 	
-	func shareWallpaper(image: UIImage) {
-		let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-		UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
-	
-		// UIApplication.shared.getRootViewController()
-		
-		//guard let urlShare = URL(string: "https://developer.apple.com/xcode/swiftui") else { return }
-		//UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
-	}
-	
-//	func saveImage() {
-//		guard let inputImage = inputImage else { return }
-//		image = Image(uiImage: inputImage)
-//		UIImageWriteToSavedPhotosAlbum(inputImage, <#T##completionTarget: Any?##Any?#>, <#T##completionSelector: Selector?##Selector?#>, <#T##contextInfo: UnsafeMutableRawPointer?##UnsafeMutableRawPointer?#>)
+//	func shareWallpaper(image: UIImage) {
+//		let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+//		UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+//	
+//		// UIApplication.shared.getRootViewController()
+//		
+//		//guard let urlShare = URL(string: "https://developer.apple.com/xcode/swiftui") else { return }
+//		//UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true, completion: nil)
 //	}
+//	
+//	func shareVideoWallpaper(_ videoStringURL: String) {
+//			 let videoURL = URL(fileURLWithPath: videoStringURL)
+//
+//			 let activityItems: [Any] = [videoURL, "Check this out!"]
+//			 let activityVC = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+//
+//		UIApplication.shared.keyWindow?.rootViewController?.present(activityVC, animated: true, completion: nil)
+//	}
+
 	
 }
 

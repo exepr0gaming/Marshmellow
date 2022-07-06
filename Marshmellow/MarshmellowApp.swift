@@ -8,28 +8,28 @@
 import SwiftUI
 import GoogleMobileAds
 import AppTrackingTransparency
-import YandexMobileMetrica
-import FirebaseCore
+//import YandexMobileMetrica
+//import FirebaseCore
 
-class AppDelegate: NSObject, UIApplicationDelegate {
- func application(_ application: UIApplication,
-									didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-	 FirebaseApp.configure()
-
-	 return true
- }
-}
+//class AppDelegate: NSObject, UIApplicationDelegate {
+// func application(_ application: UIApplication,
+//									didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+//	 FirebaseApp.configure()
+//
+//	 return true
+// }
+//}
 
 @main
 struct MarshmellowApp: App {
 	@StateObject var wallpapersFetcher = WallpapersFetcher()
-	@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+	//@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 	//@StateObject var adMobService = AdMobService()
 
 	init() {
 		//requestDataPermission()
 		GADMobileAds.sharedInstance().start(completionHandler: nil)
-		YMMYandexMetrica.activate(with: YMMYandexMetricaConfiguration.init(apiKey: ConstsE.Metrica.yandexMetrica.rawValue)!)
+		//YMMYandexMetrica.activate(with: YMMYandexMetricaConfiguration.init(apiKey: ConstsE.Metrica.yandexMetrica.rawValue)!)
 		//adMobService.adStarted()
 	}
 	
@@ -37,6 +37,7 @@ struct MarshmellowApp: App {
         WindowGroup {
 					
 					SplashScreenView()
+					//MainView(tabData: TabDataModel())
 					//DetailWallpaperView(detailFor: .liveCat, wallpaperURL: "/media/wallpapers/live/design/9046240.mp4")
 						.environmentObject(wallpapersFetcher)
 					//	.environmentObject(adMobService)

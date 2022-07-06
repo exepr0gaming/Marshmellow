@@ -25,9 +25,11 @@ struct NewCategoriesCarouselView: View {
 					HStack(alignment: .top, spacing: 6) {
 						
 							ForEach(self.wallpapersFetcher.wallpapers.newCats, id: \.self) { wallpaper in
-							
-								NavigationLink {
-									SecondScreenView(tabSelection: $tabData.currentTab, isOpens: true, gridFor: .staticCat) // category: wallpaper,
+								//NavigationLink {
+								CustomNavLink {
+									SecondScreenView(tabSelection: $tabData.currentTab, isOpens: true, gridFor: .staticCat)
+										.navBarTitle(wallpaper.nameCategory)
+									
 										.onAppear {
 												wallpapersFetcher.linkToFetchCategory = wallpaper.link
 											print("NewsCats linkToFetchCategory= \(wallpapersFetcher.linkToFetchCategory)")
@@ -36,6 +38,7 @@ struct NewCategoriesCarouselView: View {
 								} label: {
 									NewCategoriesCard(title: wallpaper.nameCategory, imageStr: wallpaper.urlPhoto)
 								}
+								
 							} // ForEach
 					
 					}

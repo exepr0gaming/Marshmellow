@@ -9,17 +9,19 @@ import SwiftUI
 import AVFoundation
 
 struct VideoCard: View {
-	var videoUrl: WallpaperCategoryUrlsModel
+	var videoUrl: String
 	
 	@State private var player = AVPlayer()
 	
     var body: some View {
 			ZStack {
 				ZStack(alignment: .bottomLeading) {
-					AsyncImage(url: URL(string: "http://159.223.194.4" + videoUrl.previewUrl)) { image in
-						image.resizable().aspectRatio(contentMode: .fill).frame(width: 160, height: 250).cornerRadius(30)
+					AsyncImage(url: URL(string: ConstsE.FetchUrlsE.apiURL.rawValue + videoUrl)) { image in
+						image.resizable().aspectRatio(contentMode: .fill)
+							.frame(height: UIDevice.isIPhone ? 310 : 488).cornerRadius(8)
 					} placeholder: {
-						Rectangle().foregroundColor(.gray.opacity(0.3)).frame(width: 160, height: 250).cornerRadius(30)
+						Rectangle().foregroundColor(.gray.opacity(0.3))
+							.frame(height: UIDevice.isIPhone ? 310 : 488).cornerRadius(8)
 					}
 				}
 

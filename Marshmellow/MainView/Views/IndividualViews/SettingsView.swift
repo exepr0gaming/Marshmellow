@@ -26,7 +26,7 @@ struct SettingsView: View {
 			.padding(.top, 20)
 			.padding(.horizontal)
 				
-			AdsAndTextView()
+			NativeAdViewRepresentable().frame(width: getScreenBounds().width, height: 282)
 		}
 		.mainFrameInfinity()
 		.background(Color.black)

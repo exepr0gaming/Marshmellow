@@ -29,12 +29,13 @@ struct NavigationBarView: View {
 					
 					Spacer()
 				}
-				Color.cGray49
-					.frame(height: 1)
+				
+				Color.cGray49.frame(height: 1)
 			} // VStack Header
 			.padding(.horizontal)
-			.frame(width: getScreenBounds().width, height: 100, alignment: .center)
-			.frame(maxWidth: .infinity)
+			
+			//.frame(width: getScreenBounds().width, height: 100, alignment: .center)
+			//.frame(maxWidth: .infinity)
 			
     }
 }

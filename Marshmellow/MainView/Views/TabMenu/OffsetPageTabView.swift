@@ -77,11 +77,16 @@ struct OffsetPageTabView<Content: View>: UIViewRepresentable {
 			let maxSize = scrollView.contentSize.width
 			//let currentSelection = (offset / maxSize).rounded()
 			let currentSelection = maxTabs / (maxSize / offset)
-			parent.selection = Int(currentSelection)
-//			print("maxTabs= \(maxTabs), offset= \(offset), maxSize= \(maxSize), cS= \(currentSelection), intCS= \(Int(currentSelection))")
 			
-			parent.offset = offset
+			DispatchQueue.main.async {
+				self.parent.selection = !(currentSelection.isNaN) ? Int(currentSelection) : 0
+				self.parent.offset = offset
+			}
+			
+			//			print("maxTabs= \(maxTabs), offset= \(offset), maxSize= \(maxSize), cS= \(currentSelection), intCS= \(Int(currentSelection))")
+			print("%%%scrollViewDidScroll, currentSelection=\(currentSelection) offset = \(offset)")
 		}
+			
 	}
 	
 }
