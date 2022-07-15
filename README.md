@@ -14,7 +14,7 @@ SwiftUI + MVVM, своё API с асинхронным парсингом дан
 Стандартное меню настроек со ссылками на документы и ресурсы.
 
 1-ый запуск
-https://user-images.githubusercontent.com/31091846/178991023-34adc579-65c1-4500-b1ee-3c595b7611c1.mp4
+https://user-images.githubusercontent.com/31091846/179233107-3957927a-ae6f-45c3-9371-69b2e8ac3f4b.mp4
 
 2-ой запуск с vpn, чтобы посмотреть рекламу
 https://drive.google.com/file/d/1kuQXtbgi6raDD0j0AW1hGGAGPu_s3Vq_/view?usp=sharing
